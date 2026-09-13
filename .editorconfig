@@ -1,0 +1,17 @@
+﻿root = true
+
+[*.md]
+charset = utf-8-bom
+insert_final_newline = true
+
+[*.{ps1,js,py}]
+charset = utf-8-bom
+insert_final_newline = true
+
+[*.{txt,csv,tsv}]
+charset = utf-8-bom
+insert_final_newline = true
+
+[*.json]
+charset = utf-8
+insert_final_newline = true
