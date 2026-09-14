@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc7
+- Version: 2.0.0-rc8
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc8 (pre-release) — fix: `Reference` has no free-text slot in a chooser, so the track name(s) are now asked in their **own free-text field right after Q4** (`Reference name(s): Artist — Track`); the bare choice is incomplete and the skill never advances to Q5/package without a typed name. DEFAULTS §F, ADAPTERS A0.4, README synced.
 
 - 2026-09-14: v2.0.0-rc7 (pre-release) — **single-emission rule** (the final 5-tag block is printed exactly ONCE per turn; no draft+final duplication, no implicit parser re-emit beside the package; re-emit only on a fresh trigger as a replacement — CORE C4, ADAPTERS) and **adaptive Q4** (on `Reference`, capture the track name(s) in the same question; if empty, ask once before Q5 — DEFAULTS §F, ADAPTERS A0.4).
 
