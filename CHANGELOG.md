@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc5
+- Version: 2.0.0-rc6
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc6 (pre-release) — setup-batch refinement: Q4 = `Reference` → Q5 shows `As in the reference` **first**, then the other options (theme + little/medium/a lot or full text, `Instrumental + Hooks and Chops`, `Instrumental`) so an instrumental or a different text volume is still possible; Q4 = `Own style` → the own/instrumental options only. Synced DEFAULTS §F, ADAPTERS A0.4, VERSION, README.
 
 - 2026-09-14: v2.0.0-rc5 (pre-release) — setup-batch logic fix: **Q5 (song task) is conditional on Q4 (track source)**. `Reference` → exactly one option `As in the reference`; `Own style — detailed/brief` → the own-task options (theme + little/medium/a lot or full text, `Instrumental + Hooks and Chops`, `Instrumental`). Synced DEFAULTS §F, ADAPTERS A0.4, VERSION, README.
 

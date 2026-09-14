@@ -19,11 +19,11 @@ Assembles ready-to-paste song packages for Suno from a vague wish, a finished te
 
 **Two versions — Pro by default.** Pro (`SKILL.md` + full stack) is the default proposal — for strong models: full research, DNA, album corridors, lively dialogue with recommendations. Lite (`LITE.md` + `LITE-TAGS.md`) is proposed only for a narrow window or when the full canon cannot be loaded: micro-steps §§0–10, batch of 3–4 questions compiled into an explanation attached to the prompt, silent-fantasy ban (audible decisions get either an answer or a `~default` mark), railed siblings, default model `v6-mini`, no guide/registry/research. The fill button works in both. Gate `§0` is a handshake, not self-estimate: observable facts (files? shell? web? remembers the window start?) + the **128k** line; proposes Pro/Lite in one line and waits for confirmation; force (`force lite` / `force pro`) — immediately, no questions.
 
-**First-launch setup batch (6 questions).** On first activation in a window, right after the handshake, the skill asks one batch of six questions: (1) **Suno version** — `v6` / `v6-wild` / `v6-mini` (no custom); (2) **skill variant** — `Pro` / `Lite`; (3) **prompt detail** — "how detailed should the prompt be?": `XL/XL` / `L/L` / `M/M` (default) / `S/S` / `Maximum (5000/1000)`; (4) **track source** — `Reference`(s) (name them; the skill builds the dossier model-first and googles only if it is thin) / `Own style — detailed` (you describe it) / `Own style — brief` (you give a short style, the skill expands it for Suno); (5) **song task** — **conditional on (4)**: `Reference` → the single option `As in the reference` (theme + form mirror the reference, words stay original); `Own style` → a free-form theme + roughly how much text (little/medium/a lot) or the full text pasted, or `Instrumental + Hooks and Chops`, or `Instrumental`; (6) **lyrics language** — `English` / `Russian` / own, which wins over the language of any Q5 text. Asked once, never re-asked in the window, skipped after `force`. Communication language and scope use their defaults (`Ru`, `single`).
+**First-launch setup batch (6 questions).** On first activation in a window, right after the handshake, the skill asks one batch of six questions: (1) **Suno version** — `v6` / `v6-wild` / `v6-mini` (no custom); (2) **skill variant** — `Pro` / `Lite`; (3) **prompt detail** — "how detailed should the prompt be?": `XL/XL` / `L/L` / `M/M` (default) / `S/S` / `Maximum (5000/1000)`; (4) **track source** — `Reference`(s) (name them; the skill builds the dossier model-first and googles only if it is thin) / `Own style — detailed` (you describe it) / `Own style — brief` (you give a short style, the skill expands it for Suno); (5) **song task** — **conditional on (4)**: `Reference` → `As in the reference` first (theme + form mirror the reference, words stay original), then the remaining options (theme + little/medium/a lot or full text, `Instrumental + Hooks and Chops`, `Instrumental`); `Own style` → the own/instrumental options only; (6) **lyrics language** — `English` / `Russian` / own, which wins over the language of any Q5 text. Asked once, never re-asked in the window, skipped after `force`. Communication language and scope use their defaults (`Ru`, `single`).
 
 | Metric (measured) | Lite pair | Pro stack | Delta |
 |---|---|---|---|
-| Instruction chars | 15738 | 112748 | **7.2×** | <!-- M:chars -->
+| Instruction chars | 15738 | 112974 | **7.2×** | <!-- M:chars -->
 
 The marked row is rewritten by `tools/measure.ps1 -UpdateReadme`.
 
@@ -127,7 +127,7 @@ Smoke: files, fences, encoding policy, validator verdicts on embedded micro-bloc
 
 ## Status and self-update
 
-v2.0.0-rc5 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
+v2.0.0-rc6 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
 
 ## FAQ
 
