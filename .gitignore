@@ -12,3 +12,7 @@ Desktop.ini
 
 # Hand-made duplicate copies (e.g. Windows "— копия")
 *копия*
+
+# Personal prompt archive — never uploaded; only .gitkeep is tracked
+Prompts/*
+!Prompts/.gitkeep

@@ -23,11 +23,13 @@ Assembles ready-to-paste song packages for Suno from a vague wish, a finished te
 
 | Metric (measured) | Lite pair | Pro stack | Delta |
 |---|---|---|---|
-| Instruction chars | 15738 | 111303 | **7.1×** | <!-- M:chars -->
+| Instruction chars | 15738 | 112356 | **7.1×** | <!-- M:chars -->
 
 The marked row is rewritten by `tools/measure.ps1 -UpdateReadme`.
 
 A v1.0.x 10-track benchmark found Pro output only 2.2% longer while quality was 21.1% higher (its artifacts are no longer shipped; the static instruction stack is now about 6.0x larger). Hence: Lite for simple drafts and narrow windows, Pro for complex reference work and finals.
+
+**Prompt archive (personal).** On workspace stands every approved package is saved to `Prompts/<title>_<dd_mm_yy>.txt` — the raw 5-tag block, no fences (spaces → `_`; collisions get `_HHMM`). The folder is **gitignored** (only `.gitkeep` travels), so your prompt files stay local and never reach GitHub. `archive: off` disables it.
 
 **Internet research (Pro) — Reference Dossier (model-first).** For a detailed reference the skill first drafts the whole dossier **from the model's own knowledge** — genre/era, BPM-key-meter, instrumentation, arrangement arc, vocal, production, moods — and self-rates each field. Only a `thin` result opens the small web corridor: **max 5** exact-phrase/`site:` queries (facts, making-of, reception — paraphrase only); snippets are leads — open and verify; stop when filled or the same domains repeat; remaining gaps stay `?`. Sources (Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM, SecondHandSongs, WhoSampled, Hooktheory — `LINKS.md` §5) are aids, not obligations. The dossier maps fingerprints-first onto the Styles 4 parts; when the reference carries text the skill mirrors its **form** — section map, line lengths/syllables, rhyme scheme — in fully original words (copy the shape, never the words). Names and titles live only in the summary/INFO `ref_*` — never in a Suno field.
 
@@ -97,6 +99,7 @@ API bots, batch generation, billing/keys, covers/video, mastering outside Suno, 
 | `GUIDE.md` | Pro runtime knowledge: stateless mechanics — read once per window | model (Pro) |
 | `STYLE-NOTES.md` | Mutable style registry (cap 30000) | model (Pro, on demand) |
 | `LINKS.md` | Runtime registry: 1 Suno official / 2 third-party / 3 community / 4 yours / 5 reference-research source databases | model (Pro) |
+| `Prompts/` | Personal prompt archive — every approved package saved as `<title>_<dd_mm_yy>.txt`; **gitignored** (only `.gitkeep` is tracked) | skill (Pro) |
 | `VERSION.md` | Release marker: versions, composition, variants | human |
 | `CHANGELOG.md` | Normative release history (SKILL.md keeps only a pointer) | human |
 | `ENCODING.md` | Encoding policy: text artifacts UTF-8 with BOM, JSON without BOM | human |
@@ -124,7 +127,7 @@ Smoke: files, fences, encoding policy, validator verdicts on embedded micro-bloc
 
 ## Status and self-update
 
-v2.0.0-rc3 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
+v2.0.0-rc4 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
 
 ## FAQ
 

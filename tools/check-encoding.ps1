@@ -54,7 +54,7 @@ function Get-EncodingInfo([string]$path) {
   }
 }
 
-$excludeDirs = @('node_modules', '.git', 'dist', 'build', 'out', 'vendor', 'coverage', '.next', '.cache', '__pycache__', '.venv', 'venv', 'obj')
+$excludeDirs = @('node_modules', '.git', 'dist', 'build', 'out', 'vendor', 'coverage', '.next', '.cache', '__pycache__', '.venv', 'venv', 'obj', 'Prompts')
 function Test-Excluded([string]$fullPath) {
   $rel = $fullPath.Substring($root.Length).TrimStart('\')
   foreach ($p in ($rel -split '[\\/]')) { if ($excludeDirs -contains $p) { return $true } }

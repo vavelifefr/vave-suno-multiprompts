@@ -53,5 +53,6 @@ On first activation in a window, **after** the §E variant handshake and **befor
 - `explain`: `off` (default) — `explain` annotates the chosen descriptors/sections with short reasons in the human summary (never inside the block).
 - `pin`: `3` (default) — the STATE card keeps the last N approved tracks in its `PINNED` table; `pin <N>` changes it.
 - `sibling` / `variation`: quick commands that never reset the branch (CORE C2 step 7).
+- `archive`: `on` — every approved package is saved to `Prompts/<title>_<dd_mm_yy>.txt` (raw 5-tag block; personal, gitignored, collisions get `_HHMM`); `off` disables.
 - `text` / `translate`: on-request clean text and its mirror, printed outside the 5-tag block.
 
