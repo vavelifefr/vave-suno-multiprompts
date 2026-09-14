@@ -23,7 +23,7 @@ Assembles ready-to-paste song packages for Suno from a vague wish, a finished te
 
 | Metric (measured) | Lite pair | Pro stack | Delta |
 |---|---|---|---|
-| Instruction chars | 15759 | 115419 | **7.3×** | <!-- M:chars -->
+| Instruction chars | 15759 | 116093 | **7.4×** | <!-- M:chars -->
 
 The marked row is rewritten by `tools/measure.ps1 -UpdateReadme`.
 
@@ -31,7 +31,7 @@ A v1.0.x 10-track benchmark found Pro output only 2.2% longer while quality was 
 
 **Prompt archive (personal).** On workspace stands every approved package is saved to `Prompts/<title>_<dd_mm_yy>.txt` — the raw 5-tag block, no fences (spaces → `_`; collisions get `_HHMM`). The folder is **gitignored** (only `.gitkeep` travels), so your prompt files stay local and never reach GitHub. `archive: off` disables it.
 
-**Internet research (Pro) — Reference Dossier (model-first).** For a detailed reference the skill first drafts the whole dossier **from the model's own knowledge** — genre/era, BPM-key-meter, instrumentation, arrangement arc, vocal, production, moods — and self-rates each field. Only a `thin` result opens the small web corridor: **max 5** exact-phrase/`site:` queries (facts, making-of, reception — paraphrase only); snippets are leads — open and verify; stop when filled or the same domains repeat; remaining gaps stay `?`. Sources (Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM, SecondHandSongs, WhoSampled, Hooktheory — `LINKS.md` §5) are aids, not obligations. The dossier maps fingerprints-first onto the Styles 4 parts; when the reference carries text the skill mirrors its **form** — section map, line lengths/syllables, rhyme scheme — in fully original words (copy the shape, never the words). Names and titles live only in the summary/INFO `ref_*` — never in a Suno field.
+**Internet research (Pro) — Reference Dossier (model-first).** For a detailed reference the skill first drafts the whole dossier **from the model's own knowledge** — genre/era, BPM-key-meter, instrumentation, arrangement arc, vocal, production, moods — and self-rates each field. A `medium` or `thin` result opens the small web corridor (search unless every load-bearing field is `high`): **max 5** exact-phrase/`site:` queries (facts, making-of, reception — paraphrase only); snippets are leads — open and verify; stop when filled or the same domains repeat; remaining gaps stay `?`. Sources (Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM, SecondHandSongs, WhoSampled, Hooktheory — `LINKS.md` §5) are aids, not obligations. The dossier maps fingerprints-first onto the Styles 4 parts; when the reference carries text the skill mirrors its **form** — section map, line lengths/syllables, rhyme scheme — in fully original words (copy the shape, never the words). Names and titles live only in the summary/INFO `ref_*` — never in a Suno field.
 
 **Source base + mini-guide.** `LINKS.md` — link registry with dates (`synced: DD.MM.YYYY` / `never`) in 4 trust tiers: 1 Suno official, 2 quality third parties (useful, not authoritative), 3 community/observed, 4 yours; single-song breakdowns banned — never overflows. `GUIDE.md` — assembly mechanics only (stateless) + `STYLE-NOTES.md` — on-demand style notes (no entry → point fetch → link + entry). Network — 4 triggers: first launch, explicit command (`update docs`, `refresh sources`, `sync docs`...), 3–4 reworks + complaint, style with no registry entry. Stale (10+ days) — one-line hint only.
 
@@ -127,7 +127,7 @@ Smoke: files, fences, encoding policy, validator verdicts on embedded micro-bloc
 
 ## Status and self-update
 
-v2.0.0-rc10 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
+v2.0.0-rc11 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
 
 ## FAQ
 

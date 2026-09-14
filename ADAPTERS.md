@@ -42,13 +42,13 @@ Lite (`LITE.md` + `LITE-TAGS.md`) is the primary answer for weak stands. If the 
 - MINIMAL: creation rules + hard caps (N/LIMIT, title cap) + R1 only.
 - Drop a level on visible degradation (ignored constraints, invented tags, lost counters).
 
-## A7. Reference research (model-first, web only on thin)
+## A7. Reference research (model-first, web on medium/thin)
 
 Trigger: the `detail` branch of CORE C2 step 2 (the brief names a real band/artist/track/album). Goal: fill the Reference Dossier (CORE Injects `<RESEARCH>`) BEFORE writing the package.
 
 1. **Try first from the model's own knowledge.** Attempt the whole dossier yourself: genre/lane, era, BPM/key/meter, instrumentation (with roles), arrangement arc, vocal type/register/delivery, production character (qualitative), moods/descriptors, and 2-3 signature production markers. Do not stall and do not ask permission for this step — just produce your best attempt.
-2. **Self-assess honestly.** Tag each field `high | medium | low`. The dossier is `thin` if it lacks BPM/key/meter, instrument detail, or an arrangement arc, or if you cannot name a signature production marker. A reference you do not actually know is `low` — never invented.
-3. **Only when `thin` → open the small web corridor.** `≤5` queries (exact-phrase/`site:`), stop when the dossier fills or the same domains repeat; snippets are leads — open and verify; ads/boosted ≠ authority. Typical queries: `"<track>" BPM key`, `"<track>" credits personnel instruments`, `"<track>" making-of production mix`, `"<track>" review style arrangement`. Say plainly when public production info does not exist, and leave gaps `?`.
+2. **Self-assess honestly.** Tag each field `high | medium | low`. The **load-bearing** fields are BPM/key/meter, instrumentation, arrangement arc, and at least one signature production marker. The dossier is `thin` if any of them is missing/low; it is `medium` if a load-bearing field is only partial or dated. **Open the corridor unless every load-bearing field is `high` — a `medium` field already earns a search; when in doubt, search.** A reference you do not actually know is `low` — never invented.
+3. **Open the small web corridor (≤5 queries)** whenever the dossier is `medium` or `thin`: exact-phrase/`site:` preferred; stop when the dossier fills or the same domains repeat; snippets are leads — open and verify; ads/boosted ≠ authority. Typical queries: `"<track>" BPM key`, `"<track>" credits personnel instruments`, `"<track>" making-of production mix`, `"<track>" review style arrangement`. Say plainly when public production info does not exist, and leave gaps `?`.
 4. **Label claim strength.** Own knowledge = `heuristic`; a single web source = `community`; a structured database or editorial outlet = `database`/`editorial`. Keep the strongest label per field.
 5. **Sources are aids, not obligations.** No source is mandatory and no stand is blocked by missing one. Useful destinations if you do search: Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM/MusicStax, SecondHandSongs, WhoSampled, Hooktheory (registered in `LINKS.md` §5). Any reliable page is fine.
 6. **Quality bar:** "would this let a producer recreate the feel?" If not, dig one more step (own knowledge or web) before writing the package.
@@ -78,6 +78,8 @@ Dossier → package mapping (single source of truth: GUIDE §4.5 table): genre/e
 - STATE fingerprint (CORE C5): under A1, when the raw block is saved, compute `sha256:` with `Get-FileHash` and inject it into the STATE card; every other stand emits the `structural:` fingerprint (lyrics/styles counts + title + last 24 chars of the INFO value). The fingerprint identifies the package for verified restore; it never replaces the parser package.
 
 ## Changelog (normative)
+
+- 2026-09-14: A7 gate widened — the web corridor opens on a `medium` **or** `thin` dossier (search unless every load-bearing field is `high`), so the model googles more readily.
 
 - 2026-09-14: single-emission (the 5-tag block shows once per turn, final only) + adaptive Q4 (capture the reference name in the same question; ask once if empty before Q5).
 

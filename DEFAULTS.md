@@ -29,7 +29,7 @@
 
 ## D. Sources (links + guide)
 
-13. `sources`: `LINKS.md` + `GUIDE.md` (EN, same folder). GUIDE.md is read once per window and consulted first (mechanics only; style vocabulary accrues in STYLE-NOTES.md on demand). Network refresh only on first-ever launch, explicit trigger (`update docs`, `refresh sources`, `sync docs`), failure-escalation (3-4 reworks + complaint), or style-note miss (targeted fetch + link + STYLE-NOTES.md entry). STALE = 10+ days (flag + suggest, no auto network). Reference-research source aids (Wikipedia / AllMusic / Discogs / MusicBrainz / Beatport / BPM-key, etc.) live in LINKS.md §5 and are used only when the model-first dossier is `thin` (ADAPTERS A7); the dossier is provenance-only.
+13. `sources`: `LINKS.md` + `GUIDE.md` (EN, same folder). GUIDE.md is read once per window and consulted first (mechanics only; style vocabulary accrues in STYLE-NOTES.md on demand). Network refresh only on first-ever launch, explicit trigger (`update docs`, `refresh sources`, `sync docs`), failure-escalation (3-4 reworks + complaint), or style-note miss (targeted fetch + link + STYLE-NOTES.md entry). STALE = 10+ days (flag + suggest, no auto network). Reference-research source aids (Wikipedia / AllMusic / Discogs / MusicBrainz / Beatport / BPM-key, etc.) live in LINKS.md §5 and are used when the model-first dossier is `medium` or `thin` — i.e. unless every load-bearing field is `high` (ADAPTERS A7); the dossier is provenance-only.
 
 ## E. Variant (entry power)
 

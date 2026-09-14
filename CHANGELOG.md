@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc10
+- Version: 2.0.0-rc11
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc11 (pre-release) — reference-research gate widened: the ≤5-query web corridor now opens on a **`medium` or `thin`** dossier (search unless every load-bearing field — BPM/key, instrumentation, arrangement arc, a signature production marker — is `high`), so the model googles more readily. CORE `<RESEARCH>`/C2, ADAPTERS A7 (+title), DEFAULTS §D, LINKS §5, README, VERSION synced.
 
 - 2026-09-14: v2.0.0-rc10 (pre-release) — audit fixes. (a) README "no Suno automation"/"sliders by hand" reworded (the fill button applies the More Options controls; Create is never pressed) and the stale "6.0x" → **7.3×**. (b) userscript FREE-TIER log no longer claims sliders are untouched. (c) **Exclude cap 200 → 1000** (live-observed) across RULES R3, SKILL §7.2, README, and the validator (`$workExcludeCap`, WARN threshold). (d) `SKILL.md §8` adapter range `A0–A6` → `A0–A7`. (e) ADAPTERS/LITE changelog entries marked superseded/historical (mandatory A7 set, Variant 2). (f) CORE C2 no longer re-asks `detail`/`general` when the setup batch already set `Reference`+tier. (g) LITE counter placement aligned to the summary.
 

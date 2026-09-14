@@ -42,7 +42,7 @@ Independent guides and observations. Single-source claims stay weakest: prefer m
 
 ## 5. Reference-research sources (databases)
 
-Looked up only when the model-first dossier is `thin` (ADAPTERS.md A7). These are optional aids, not a mandatory set: query them live; never paste song data into this registry — a line records the SOURCE.
+Looked up when the model-first dossier is `medium` or `thin` (ADAPTERS.md A7) — i.e. unless every load-bearing field is `high`. These are optional aids, not a mandatory set: query them live; never paste song data into this registry — a line records the SOURCE.
 
 - https://musicbrainz.org — synced: never — scope: structured credits/instruments (`artist-rels`, `recording-level-rels`), genres/tags, ISRC; REST `ws/2` `fmt=json`, `User-Agent` required, ~1 req/s.
 - https://www.discogs.com — synced: never — scope: styles/subgenres, credits (who played what), label/year/country/format (API token).
