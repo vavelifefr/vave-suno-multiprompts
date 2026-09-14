@@ -6,6 +6,7 @@ Desktop.ini
 # Scratch / temp
 *.tmp
 *.bak
+*.png
 
 # Build artifacts
 *.zip
