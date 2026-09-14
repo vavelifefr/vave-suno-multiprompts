@@ -1,7 +1,7 @@
 ﻿# GUIDE.md — Pro runtime knowledge (assembly manual) for vave-suno-multiprompts
 
-- Version: 2026-09-12. Language: English. Same folder as SKILL.md.
-- Sync: pending first launch (all LINKS.md stamps are `never`; full pass over sections 1-3 + rewrite on first activation per SKILL.md §2.1). Mechanics below are the shipped baseline the pass verifies and extends.
+- Version: 2026-09-14. Language: English. Same folder as SKILL.md.
+- Sync: first full pass done 2026-09-14 (LINKS.md §1-3 visited and stamped; mechanics below verified against the sources — no core contradictions, so GUIDE core unchanged).
 - Status: consult-first IMMUTABLE assembly manual. This file teaches HOW TO BUILD a prompt under the current docs — never ready-made genre recipes, never accumulating state. Reusable style vocabulary accrues ONLY in `STYLE-NOTES.md` (mutable registry, one stamped entry per requested style, added on demand). A style request with no direct registry note and no sufficient mechanics answer here → targeted web per the LINKS.md network policy, then link + registry note.
 - Hard cap: 50000 chars including spaces. If an update would overflow, compress old mechanics rows first, never drop the pipeline or the anti-patterns. (Registry overflow is handled in `STYLE-NOTES.md`, never here.)
 - Hard boundary (SKILL.md §6 restated): style pages and guides are research-only vocabulary mines. Describe traits, never emit real artist names, unlicensed third-party titles, or unlicensed third-party lyric chunks anywhere in Lyrics/Styles/Title/Exclude.
@@ -155,6 +155,8 @@ When adapting a working direction, swap only one or two dimensions at a time (rh
 A style request with no direct note in `STYLE-NOTES.md` and no sufficient answer in this manual (§4-§7) triggers a targeted web fetch inside the LINKS.md network policy, then exactly one stamped entry in `STYLE-NOTES.md`. Entry shape, cap, and edit discipline live in that file (single source of truth).
 
 ## Changelog
+
+- 2026-09-14: first-launch source sync — LINKS §1-3 verified & stamped; mechanics confirmed (no core change).
 
 - 2026-09-14: §4.5 adds the prosody row + the dossier → primary-prompt → 5-tag-chunk chain note (single source of truth for the mapping).
 

@@ -23,7 +23,7 @@ Assembles ready-to-paste song packages for Suno from a vague wish, a finished te
 
 | Metric (measured) | Lite pair | Pro stack | Delta |
 |---|---|---|---|
-| Instruction chars | 15759 | 116093 | **7.4×** | <!-- M:chars -->
+| Instruction chars | 15759 | 116234 | **7.4×** | <!-- M:chars -->
 
 The marked row is rewritten by `tools/measure.ps1 -UpdateReadme`.
 
@@ -127,7 +127,7 @@ Smoke: files, fences, encoding policy, validator verdicts on embedded micro-bloc
 
 ## Status and self-update
 
-v2.0.0-rc11 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
+v2.0.0-rc11 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15478/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
 
 ## FAQ
 
