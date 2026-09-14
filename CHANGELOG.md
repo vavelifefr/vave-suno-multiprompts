@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc11
+- Version: 2.0.0-rc12
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc12 (pre-release) — output fix: the 5-tag chunk is ALWAYS rendered as one fenced code block in the answer (that fence has the UI copy button); a file write / archive is only a side artifact and never a substitute (harness file cards have no copy button). Supersedes the rc9 "archive write is the single render" wording. CORE C4, ADAPTERS, README synced.
 
 - 2026-09-14: docs sync (maintenance) — first full pass over `LINKS.md` §1-3 (help.suno.com, v6 release-notes/blog, community-guidelines; sunostyles ×6, hookgenius, usesuno, blakecrosley, freesongwritingtools). Mechanics verified against sources — **no core contradictions**, so GUIDE core and the version are unchanged. LINKS stamps → `14.09.2026`; GUIDE sync line + version refreshed; STYLE-NOTES left empty (accrual on demand).
 

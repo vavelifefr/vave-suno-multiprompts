@@ -122,4 +122,4 @@ All human-facing files in this skill are English-only by design (see README.md).
 
 ## Changelog
 
-Full history: `CHANGELOG.md` (normative archive). Latest release: v2.0.0-rc11 (2026-09-14); new entries go to CHANGELOG.md per the README rule.
+Full history: `CHANGELOG.md` (normative archive). Latest release: v2.0.0-rc12 (2026-09-14); new entries go to CHANGELOG.md per the README rule.
