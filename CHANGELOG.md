@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc8
+- Version: 2.0.0-rc9
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc9 (pre-release) — **single-render fix**: the 5-tag block now appears exactly ONCE in the conversation. When the archive write surfaces its file content (harnesses that echo writes), that write IS the single render and the answer must NOT paste the block again; on harnesses that hide file content, the answer carries it once and the archive is written silently. CORE C4 + ADAPTERS + README synced (previously the echoed archive write plus the pasted block produced two copies).
 
 - 2026-09-14: v2.0.0-rc8 (pre-release) — fix: `Reference` has no free-text slot in a chooser, so the track name(s) are now asked in their **own free-text field right after Q4** (`Reference name(s): Artist — Track`); the bare choice is incomplete and the skill never advances to Q5/package without a typed name. DEFAULTS §F, ADAPTERS A0.4, README synced.
 
