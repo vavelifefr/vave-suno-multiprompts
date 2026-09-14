@@ -2,7 +2,7 @@
 <#
 .SYNOPSIS
   Structural validator for vave-suno-multiprompts section 5 parser blocks + Lyrics tag-cement check.
-  Role (honest): STRUCTURAL/SYNTACTIC pass only - shape, key tags, blanks, MOREOPTIONS grammar, INFO stamps,   bracket bans, tag cement, closer count, Styles 4-line shape, Exclude count+length, Title length, working caps, tier ceilings when flagged. NOT a full Skill validator.
+  Role (honest): STRUCTURAL/SYNTACTIC pass only - shape, key tags, blanks, MOREOPTIONS grammar, INFO stamps (incl. lang), bracket bans, tag cement, closer count, Styles 4-line shape, Exclude count+length, Title length, working caps, tier ceilings when flagged. NOT a full Skill validator.
   Out of scope by design (stay human in Self-check): mood-tension coherence, sung-line vocabulary (genre/mood/tempo words), artist-name/likeness/rights judgment, render-behavior prediction, the tier choice itself.
   Usage: powershell -NoProfile -ExecutionPolicy Bypass -File tools/validate-block.ps1 -Path <block.txt> [-LyricsTier S|M|L|XL] [-StylesTier S|M|L|XL]
   Exit 0 = VALID (warnings allowed, listed). Exit 1 = INVALID (failures listed).
@@ -17,7 +17,7 @@
   names/order and invalid values FAIL.
   Instrument-cue colon lines (Drums/Bass/Guitar/Piano/Strings/Synth/Keys/Organ/Brass/Percussion, <=8 words) pass.
   F-lexicon combos (gender + F-group words parsed from the section F table, single line ending in vocal(s), <=8 words) pass via Test-VocalCombo.
-  Cross-field semantics FAIL: Vocal Gender switch must agree with the lead vocal tags; instrumental STYLES ("no vocals, instrumental") forbids vocal tags and sung lines; every sung Lyrics line must appear in TEXTONLY. WARN: competing deliveries in one section, repeated Styles descriptors.
+  Cross-field semantics FAIL: Vocal Gender switch must agree with the lead vocal tags; instrumental STYLES ("no vocals, instrumental") forbids vocal tags and sung lines; INFO lang must be a 2-3 letter code. WARN: competing deliveries in one section, repeated Styles descriptors.
   Blank-line map: exactly one blank line before each A-table head, else FAIL (missing or multiple).
 #>
 param(
@@ -223,8 +223,8 @@ function Get-BracketInner($line) {
   return $t.Substring(1, $t.Length - 2)
 }
 
-# ---- 1. key tags: exactly 7, in order, alone on their lines ----
-$expected = @('TRACK:->', 'LYRICS:->', 'STYLES:->', 'MOREOPTIONS:->', 'TEXTONLY:->', 'TRANSLATE:->', 'INFO:->')
+# ---- 1. key tags: exactly 5, in order, alone on their lines ----
+$expected = @('TRACK:->', 'LYRICS:->', 'STYLES:->', 'MOREOPTIONS:->', 'INFO:->')
 $found = @()
 for ($i = 0; $i -lt $lines.Count; $i++) {
   $t = $lines[$i].Trim()
@@ -253,7 +253,7 @@ if (($foundSeq -join '|') -ne ($expected -join '|')) {
     $vals[$found[$k].Tag] = $v
   }
   foreach ($tag in $expected) {
-    if ($vals[$tag].Count -eq 0 -and $tag -ne 'TRANSLATE:->') { Add-Fail ("empty value for " + $tag + " (only TRANSLATE:-> may be empty)") }
+    if ($vals[$tag].Count -eq 0) { Add-Fail ("empty value for " + $tag) }
   }
   # ---- 3b. section lengths, computed once and reused below (INFO line, 6e) ----
   $nLyrics = ($vals['LYRICS:->'] -join "`n").Length
@@ -296,6 +296,7 @@ if (($foundSeq -join '|') -ne ($expected -join '|')) {
       if ($fieldCount -ne 1) { Add-Fail ("INFO must contain exactly one " + $fieldSpec + " field; found " + $fieldCount) }
     }
     if ($info -notmatch '(?i)(?:^|[;/|]\s*)model:\s*(v6|v6-wild|v6-mini)\s*(?:[;/|]|$)') { Add-Fail "INFO model must be v6 | v6-wild | v6-mini" }
+    if ($info -notmatch '(?i)(?:^|[;/|]\s*)lang:\s*[A-Za-z]{2,3}\s*(?:[;/|]|$)') { Add-Fail "INFO lang must be a 2-3 letter code (en | ru | ...)" }
     if ($info -notmatch 'Suno version:') { Add-Fail "INFO missing 'Suno version:'" }
     elseif ($info -notmatch 'Suno version:\s*(v6 family \([^;]+\), reference v[0-9]{4}-[0-9]{2}-[0-9]{2}|current web custom mode, exact build unavailable)') { Add-Fail "INFO has unsupported or malformed 'Suno version:' value" }
     $versionDateHit = [regex]::Match($info, 'Suno version:\s*v6 family \([^;]+\), reference v([0-9]{4}-[0-9]{2}-[0-9]{2})')
@@ -332,18 +333,7 @@ if (($foundSeq -join '|') -ne ($expected -join '|')) {
       if ($refTitle.Length -ge 8 -and $refTitle -match '\s' -and $sunoFields.IndexOf($refTitle, [System.StringComparison]::OrdinalIgnoreCase) -ge 0) { Add-Fail "reference title leaked into Suno fields" }
       elseif (@($sunoRows | Where-Object { $_.Trim().Equals($refTitle, [System.StringComparison]::OrdinalIgnoreCase) }).Count -gt 0) { Add-Fail "reference title leaked as an exact Suno-field line" }
     }
-  }
-  # ---- 6. TEXTONLY / TRANSLATE carry no brackets ----
-  foreach ($tag in @('TEXTONLY:->', 'TRANSLATE:->')) {
-    if ($vals.ContainsKey($tag)) {
-      $hit = @($vals[$tag] | Where-Object { $_ -match '\[' -or $_ -match '\]' })
-      if ($hit.Count -gt 0) { Add-Fail ($tag + " must carry no bracket tags") }
-    }
-  }
-  if ($vals.ContainsKey('TEXTONLY:->') -and $vals.ContainsKey('TRANSLATE:->')) {
-    $textRows = @($vals['TEXTONLY:->'] | Where-Object { $_.Trim() -ne '' })
-    $transRows = @($vals['TRANSLATE:->'] | Where-Object { $_.Trim() -ne '' })
-    if ($transRows.Count -gt 0 -and $transRows.Count -ne $textRows.Count) { Add-Fail ("TRANSLATE non-empty line count must mirror TEXTONLY; found " + $transRows.Count + " vs " + $textRows.Count) }
+    if (($info -match '(?i)(?:^|[;/|]\s*)ref_track:') -and ($info -notmatch '(?i)(?:^|[;/|]\s*)ref_sources:\s*\S')) { Add-Fail "INFO ref_track requires ref_sources: (provenance required; ADAPTERS A7 / RULES R1)" }
   }
   # ---- 6b. STYLES carries no bracket tags (rule 10: sound words only) ----
   if ($vals.ContainsKey('STYLES:->')) {
@@ -502,15 +492,6 @@ if (($foundSeq -join '|') -ne ($expected -join '|')) {
       $sung = @($vals['LYRICS:->'] | Where-Object { $_.Trim() -ne '' -and -not $_.Trim().StartsWith('[') })
       if ($sung.Count -gt 0) { Add-Fail ("STYLES say instrumental but Lyrics carries sung lines (" + $sung.Count + ")") }
       elseif ($vg -eq 'Male' -or $vg -eq 'Female') { Add-Warn "STYLES say instrumental but Vocal Gender switch is set" }
-    }
-    if ($vals.ContainsKey('TEXTONLY:->')) {
-      $toSet = @{}
-      foreach ($l in $vals['TEXTONLY:->']) { $k = $l.Trim().ToLower(); if ($k -ne '') { $toSet[$k] = $true } }
-      foreach ($l in $vals['LYRICS:->']) {
-        $t = $l.Trim()
-        if ($t -eq '' -or $t.StartsWith('[') -or $t.StartsWith('(')) { continue }
-        if (-not $toSet.ContainsKey($t.ToLower())) { Add-Fail ("sung line missing from TEXTONLY: " + $t) }
-      }
     }
     $stop = @('vocals', 'vocal', 'voice', 'lead', 'backing', 'hook', 'hooks', 'drums', 'drum', 'bass', 'layers', 'layer', 'synth', 'synths', 'texture', 'rhythm', 'energy', 'delivery', 'groove', 'sound', 'style', 'chord', 'chords', 'mix', 'room', 'main', 'theme')
     $seen = @{}; $dup = @()

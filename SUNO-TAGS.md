@@ -69,14 +69,14 @@ OFF = Suno-owned surfaces (help center, Lyrics Editor labels, release notes). BL
 | `[Ad-Lib]` / `[Ad-lib]` / `[Ad-libs]` | Improvised flourishes over the section | BL/UU/HG |
 | `[Vocal Run]` | Melismatic run passage | SA |
 | `[Belted]` | Powerful chest-voice delivery | UU |
-| `[Vocal Hook]` / `[Female Vocal Hook: "Hey"]` / `[Male Vocal Hook: "Hey"]` | Sung hook exclamation; quoted span always sung, quotes dropped in TEXTONLY | USR (operator-mandated pattern) |
+| `[Vocal Hook]` / `[Female Vocal Hook: "Hey"]` / `[Male Vocal Hook: "Hey"]` | Sung hook exclamation; quoted span always sung, quotes dropped in the clean text | USR (operator-mandated pattern) |
 
 ## C. Service info Suno understands — not sung, controls behavior
 
 | Marker | Where | Meaning |
 |---|---|---|
 | `[...]` tags above | Lyrics box | Arrangement/vocal instruction, never sung |
-| `(...)` parenthetical line | Lyrics box | Sung softly as ad-lib/backing — keep short; sung backing keeps LINE only in TEXTONLY; line-initial `(direction)` + sung text = direction for that line (see E) |
+| `(...)` parenthetical line | Lyrics box | Sung softly as ad-lib/backing — keep short; sung backing keeps LINE only in the clean text; line-initial `(direction)` + sung text = direction for that line (see E) |
 | `N/LIMIT` counter | Skill output only | Character audit, never pasted into Suno |
 | `140 BPM`, `Key of A minor` | Styles box | Tempo/key descriptors, plain words |
 | `Exclude: ...` | Exclude field | Comma-separated plain names in the file (`Pop music, Classical, Rap`) or `Exclude: none`; the Suno UI shows them with a `-` prefix |
@@ -133,8 +133,8 @@ Operator examples are not canon — the left column is never emitted. Heads stay
 | Detail briefs | `[Theme: ...]`, `[Main motif: ...]`, `[Dynamics: ...]` | Modifier lines inside the tier-scaled budget |
 | Banned in Lyrics | `[Tempo: ...]`, `[Key: ...]` | Move to Styles once; note-level movement (F#→D) stays as motif description |
 | Sung backing | `(Backing: No!)` | 1-4 words, caps preserved; arrangement notes about backing go in brackets |
-| Line-initial direction | `(whispering) Stay here...` | Parens prefix opening a line with sung text after = direction for that line only, not sung; TEXTONLY drops the prefix |
-| Quoted hook | `[Female Vocal Hook: "Hey"]` | Quoted span is always sung (sing/whisper/shout/moan per delivery); TEXTONLY keeps the words, drops quotes |
+| Line-initial direction | `(whispering) Stay here...` | Parens prefix opening a line with sung text after = direction for that line only, not sung; the clean text drops the prefix |
+| Quoted hook | `[Female Vocal Hook: "Hey"]` | Quoted span is always sung (sing/whisper/shout/moan per delivery); the clean text keeps the words, drops quotes |
 | Phase color line | `[Acid Phase]` after `[Bridge]` | Mood/era color on its own line, never stacked with the head |
 | No nesting | `Bass Drum (Kick)` forbidden | Expand flat: `[808 Kick - Bass drum]` |
 | SFX cue | `[Vinyl crackle, sea waves]` | Brackets only (parens would be sung); only at real arrangement changes |

@@ -1,8 +1,23 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 1.1.0
-- Date: 2026-09-13
+- Version: 2.0.0-rc2
+- Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc2 (pre-release) — QoL pack: **diff preview** on paper edits (`was → now`, `no diff`), **alt-takes** (`alt-takes` / `2 styles` → a/b/c style variants), **explain** mode (reasons next to chosen descriptors), **counter summary line** at the top of the human order, and a **`PINNED`** last-N-tracks table in STATE v2 (`pin <N>`, default 3). Documented in CORE C2/C4/C5, DEFAULTS §G, ADAPTERS tools map, README, LITE (Pro-only note).
+
+- 2026-09-14: v2.0.0-rc1 (pre-release) — parser block reduced to **5 tags** (`TRACK`→`LYRICS`→`STYLES`→`MOREOPTIONS`→`INFO`); `TEXTONLY`/`TRANSLATE` removed and become **on-request exports** (`text` / `translate`, printed outside the block). INFO gains `lang:` and the lyrics language is **sticky for the branch**. **Decide-and-act** model stance. Quick sibling/variation commands without reset. Lite mirrors Pro. Validator: 5 tags, `lang:` required; smoke updated. Userscript v3.10.0 slices `[TRACK:-> .. INFO:->)`.
+
+- 2026-09-14: v2.0.0-rc1 (pre-release) — parser block reduced to **5 tags** (`TRACK`→`LYRICS`→`STYLES`→`MOREOPTIONS`→`INFO`); `TEXTONLY`/`TRANSLATE` removed and become **on-request exports** (`text` / `translate`, printed outside the block). INFO gains `lang:` and the lyrics language is **sticky for the branch** (edits in any language never switch it). **Decide-and-act** model stance (reason about reference + dialogue, then act with one short justification). Quick sibling/variation commands (`sibling of <track>` / `variation`) without reset. Lite mirrors Pro (no TEXTONLY/TRANSLATE). Validator: 5 tags, `lang:` required, TEXTONLY/TRANSLATE checks removed; smoke fixtures/probes updated. Userscript v3.10.0 slices `[TRACK:-> .. INFO:->)`. Docs synced (CORE/RULES/ADAPTERS/DEFAULTS/GUIDE/LITE/SUNO-TAGS/README/VERSION).
+
+- 2026-09-14: v1.5.0 — **prosody mirroring**: when the reference carries text, the skill reads its FORM (section map, lines per section, syllables/meter, rhyme scheme, refrain behavior) and reproduces it in fully original words (copy the shape, never the words). RULES R7 bullet, CORE `<RESEARCH>` prosody field + C2 step 2, ADAPTERS A7 mapping, GUIDE §7. README/VERSION synced.
+
+- 2026-09-14: v1.4.0 — reference research is now **model-first** (ADAPTERS A7 rewritten): the model attempts the full Reference Dossier from its own knowledge and self-rates each field `high/medium/low`; the ≤5-query web corridor opens only when the result is `thin`. The mandatory source set (MusicBrainz/Discogs/AllMusic/BPM-key) is gone — sources are optional aids (`LINKS.md` §5). CORE `<RESEARCH>`/C2, DEFAULTS §F Q4, RULES R9 (`ref_sources: model knowledge` when no web source), README, VERSION synced.
+
+- 2026-09-14: v1.3.0 — first-launch setup batch redesigned (DEFAULTS §F + ADAPTERS A0.4 + SKILL/VERSION/README/LITE synced, now six questions): (1) Suno version `v6`/`v6-wild`/`v6-mini`, no custom; (2) skill variant `Pro`/`Lite`; (3) prompt detail "how detailed should the prompt be?" — `XL/XL` / `L/L` / `M/M` (default) / `S/S` / `Maximum (5000/1000)`; (4) track source — `Reference`(s) (name them → web research) / `Own style — detailed` / `Own style — brief` (skill expands for Suno); (5) song task — theme + little/medium/a lot or the full text, or `Instrumental + Hooks and Chops`, or `Instrumental`; (6) lyrics language, which wins over the Q5 text language (Q5 is a task, not a language choice). Communication language and scope now use the §A defaults (`Ru`, `single`).
+
+- 2026-09-14: v1.2.0 — Reference Dossier for the Pro detail branch. Mandatory source set (MusicBrainz credits/instruments+genres, Discogs styles/credits, AllMusic Genre/Styles/Moods/Themes+review, BPM/key via Beatport or SongBPM/MusicStax; local Demucs/librosa when audio is present) + a ≤5-query web corridor; dossier fields and claim-strength priority in CORE `<RESEARCH>` (C2 step 2); mechanics in ADAPTERS A7; source databases in LINKS.md §5; dossier→Styles mapping in GUIDE §4.5; R1 provenance bullet (dossier never reaches a Suno field) + R9 item; validator now FAILs `ref_track` without `ref_sources`; README/quick-start updated.
+
 
 - 2026-09-13: suno-fill v3.9.0 — removed the green field outline (`mark()` and its calls) that stayed after the run and read as interface flicker on the text fields. Saved the last good build as tools/backups/suno-fill.v3.8.0.user.js.
 

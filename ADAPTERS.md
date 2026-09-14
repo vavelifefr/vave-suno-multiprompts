@@ -8,7 +8,7 @@
 1. Prove, don't believe: folder files open? shell runs? web fetches? do you remember this window's start? Ask the operator where YOU cannot observe (one line), never introspect capacity.
 2. Variant by the 128k line and loadability: **default proposal is Pro** when the window can hold CORE+RULES+TAGS and the required files are available. Missing shell, web, or retained memory selects the documented Pro degradation (manual checklist, embedded sources, STATE), not Lite by itself. Use Lite only for narrower windows or when the full canon cannot be loaded. Unsure → prove loadability before dropping to Lite.
 3. Confirm in one line (in comm language), then wait: `Running <Pro|Lite> (stand: <adapter/profile>) — confirm or say force Lite / force Pro.` Force (any language) wins immediately, remembered for the window (or on the STATE card when stateless). Mid-window switch only on explicit order — track memory drops.
-4. First launch in the window (after the handshake, before the first brief, unless forced): run the five-question setup batch from `DEFAULTS.md` §F once — lyrics language, communication language, model, detail tier, scope; each with listed options plus a free-form "your own" field. Never re-ask within the window.
+4. First launch in the window (after the handshake, before the first brief, unless forced): run the six-question setup batch from `DEFAULTS.md` §F once — Suno version (`v6` / `v6-wild` / `v6-mini`, no custom), skill variant (`Pro` / `Lite`), prompt detail (`XL/XL` / `L/L` / `M/M` / `S/S` / `Maximum (5000/1000)`), track source (`Reference`(s) → web research / `Own style — detailed` / `Own style — brief` → skill expands), song task (theme + little/medium/a lot, or the full text, or `Instrumental + Hooks and Chops`, or `Instrumental`), lyrics language (`English` / `Russian` / own — this wins over the language of the Q5 text). Never re-ask within the window.
 
 ## A1. API agent (folder + shell + web — the Full stand)
 
@@ -42,6 +42,19 @@ Lite (`LITE.md` + `LITE-TAGS.md`) is the primary answer for weak stands. If the 
 - MINIMAL: creation rules + hard caps (N/LIMIT, title cap) + R1 only.
 - Drop a level on visible degradation (ignored constraints, invented tags, lost counters).
 
+## A7. Reference research (model-first, web only on thin)
+
+Trigger: the `detail` branch of CORE C2 step 2 (the brief names a real band/artist/track/album). Goal: fill the Reference Dossier (CORE Injects `<RESEARCH>`) BEFORE writing the package.
+
+1. **Try first from the model's own knowledge.** Attempt the whole dossier yourself: genre/lane, era, BPM/key/meter, instrumentation (with roles), arrangement arc, vocal type/register/delivery, production character (qualitative), moods/descriptors, and 2-3 signature production markers. Do not stall and do not ask permission for this step — just produce your best attempt.
+2. **Self-assess honestly.** Tag each field `high | medium | low`. The dossier is `thin` if it lacks BPM/key/meter, instrument detail, or an arrangement arc, or if you cannot name a signature production marker. A reference you do not actually know is `low` — never invented.
+3. **Only when `thin` → open the small web corridor.** `≤5` queries (exact-phrase/`site:`), stop when the dossier fills or the same domains repeat; snippets are leads — open and verify; ads/boosted ≠ authority. Typical queries: `"<track>" BPM key`, `"<track>" credits personnel instruments`, `"<track>" making-of production mix`, `"<track>" review style arrangement`. Say plainly when public production info does not exist, and leave gaps `?`.
+4. **Label claim strength.** Own knowledge = `heuristic`; a single web source = `community`; a structured database or editorial outlet = `database`/`editorial`. Keep the strongest label per field.
+5. **Sources are aids, not obligations.** No source is mandatory and no stand is blocked by missing one. Useful destinations if you do search: Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM/MusicStax, SecondHandSongs, WhoSampled, Hooktheory (registered in `LINKS.md` §5). Any reliable page is fine.
+6. **Quality bar:** "would this let a producer recreate the feel?" If not, dig one more step (own knowledge or web) before writing the package.
+
+Dossier → package mapping: genre/subgenre/era → Styles parts 1 and 4; instrumentation + arrangement → Styles part 2 (+ Exclude ≤3 for bleeders); vocal → Styles part 3 + B-table vocal heads + the `Vocal Gender` switch; BPM/key/meter → Styles Base once; descriptors/moods → Styles part 4 (one tension); prosody (when the reference carries text) → Lyrics section map, line lengths/syllables and rhyme scheme, re-authored with original words only. R1 restated: the dossier is provenance — real names/titles appear ONLY in the human summary and INFO `ref_track`/`ref_sources` (optional compact `ref_dossier`), NEVER in Lyrics/Styles/Title/Exclude, and hook lines are never copied.
+
 ## Bindings matrix (inject → source per adapter)
 
 | Inject | A1 agent | A2 chat+files | A3 inline | A4 local | A5 stateless |
@@ -55,14 +68,23 @@ Lite (`LITE.md` + `LITE-TAGS.md`) is the primary answer for weak stands. If the 
 
 ## Tools map (shared, stand-independent)
 
-- `tools/validate-block.ps1` — structural validator (shape, tags, counts+caps, tiers when flagged via `-LyricsTier/-StylesTier` — always pass the session tiers so ceilings are enforced, not just reported). Needs PowerShell 5.1+; everywhere else the manual checklist that mirrors it is RULES R9 (+ CORE C4 shapes): 7 tags in order / blanks around key tags / MOREOPTIONS 7+1 / INFO stamps / no brackets in TEXTONLY+TRANSLATE+STYLES / heads A/B, briefs E / one closer / Styles 4 lines / Exclude ≤3 / N within tier top + working caps.
+- `tools/validate-block.ps1` — structural validator (shape, tags, counts+caps, tiers when flagged via `-LyricsTier/-StylesTier` — always pass the session tiers so ceilings are enforced, not just reported). Needs PowerShell 5.1+; everywhere else the manual checklist that mirrors it is RULES R9 (+ CORE C4 shapes): 5 tags in order / blanks around key tags / MOREOPTIONS 7+1 / INFO stamps (incl. `model:` + `lang:`) / no brackets in STYLES / heads A/B, briefs E / one closer / Styles 4 lines / Exclude ≤3 / N within tier top + working caps.
 - `tools/suno-fill.user.js` — browser userscript (operator side, all stands): fills four text fields (Lyrics/Styles/Title/Exclude) from the clipboard, applies the More Options controls (Vocal Gender/Duration/Max Mode/Personalize toggles, Weirdness/Style Influence sliders, Variety by name) with read-back, and forces the Advanced tab; it never clicks Create. When the free/mini model is selected it logs a FREE-TIER notice and applies the safe style cap. The read-only diagnostics command emits one copyable JSON report (fields, selectors, sliders, control rows, tabs, model, caps) without writing or clicking.
 - Web research backend — `LINKS.md` registry + `GUIDE.md` mechanics + `STYLE-NOTES.md` entries where files persist (A1/A2); pasted excerpts on explicit order elsewhere (A3); operator-fed everywhere as fallback (A4/A5). Query craft (every search must earn a field): 2-3 targeted queries per track — facts (`"<title>" BPM key`), making-of (`sound on sound` / `mix` / producer interview), reception (descriptive vocabulary, paraphrased, never quoted); exact-phrase and `site:` over one broad query; ads/boosted ≠ authority; snippets are leads, open and verify; stop rule (same domains twice / no new facts → stop, gaps marked `?`).
 - Link intake mechanics (Input D): fetch the URL once from the harness (or operator paste); shell/metadata-only result → one-line notice + 4-field paste request (Lyrics/Styles/Title/Exclude); INFO carries `ref_url:` + `import:`.
-- Parser export mechanics: one 7-tag block per CORE C4, manual copy/save. Present the chunk as ONE fenced block (```text … ```) holding everything from TRACK:-> through the end of the INFO value — the copy-button window; summaries and Self-check stay outside it. No buttons and no file writes in button-less stands (AI Studio: operator copies); agent harnesses may additionally write `.txt` on explicit request. Never emit silently alongside the human package.
+- Parser export mechanics: one 5-tag block per CORE C4, manual copy/save. Present the chunk as ONE fenced block (```text … ```) holding everything from TRACK:-> through the end of the INFO value — the copy-button window; summaries and Self-check stay outside it. On request, show the clean text (`text`) or its mirror (`translate`) as separate plain blocks, never inside the 5-tag block. No buttons and no file writes in button-less stands (AI Studio: operator copies); agent harnesses may additionally write `.txt` on explicit request. Never emit silently alongside the human package.
+- QoL commands (Pro, window memory): `text` / `translate` (clean text + mirror), `sibling of <track>` / `variation` (no reset), `alt-takes` / `2 styles` (a/b/c style variants), `diff` / `no diff` (edit preview), `explain` (descriptor reasons), `pin <N>` (STATE last-N table). None of them touch the 5-tag block shape.
 - STATE fingerprint (CORE C5): under A1, when the raw block is saved, compute `sha256:` with `Get-FileHash` and inject it into the STATE card; every other stand emits the `structural:` fingerprint (lyrics/styles counts + title + last 24 chars of the INFO value). The fingerprint identifies the package for verified restore; it never replaces the parser package.
 
 ## Changelog (normative)
+
+- 2026-09-14: QoL commands documented (diff preview, alt-takes, explain, pin) alongside `text`/`translate` and sibling/variation.
+
+- 2026-09-14: pre-release rc — parser block is 5 tags; `text`/`translate` are on-request exports (tools map + export mechanics updated); INFO gains `lang:`.
+
+- 2026-09-14: A7 reworked to model-first — the model attempts the full dossier from its own knowledge, self-assesses (`thin`), and only then opens the ≤5-query corridor; the source list is now optional aids, not a mandatory set.
+
+- 2026-09-14: A7 Reference research added (mandatory MusicBrainz + Discogs + AllMusic + BPM/key set, local Demucs/librosa add-on, ≤5-query corridor, dossier→package mapping, R1 provenance). CORE C2 detail branch points here.
 
 - 2026-09-13: Pro default + first-launch setup batch (A0 step 4); A2/A3 merged (chat-with-files + long-context chat) and renumbered A0–A6; manual-checklist pointer fixed to RULES R9 / CORE C4.
 

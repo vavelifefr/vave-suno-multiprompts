@@ -5,7 +5,7 @@
   Usage: powershell -NoProfile -ExecutionPolicy Bypass -File tools/smoke.ps1
   Checks: expected files exist; fences balanced in *.md; source encoding policy;
   validate-block.ps1 verdicts on two embedded ASCII micro-blocks (VALID + INVALID)
-  plus two cross-field semantic bad-blocks (gender mismatch, TEXTONLY gap);
+  plus a cross-field semantic bad-block (gender mismatch) and an INFO-lang probe;
   README metric row (M:chars marker) matches fresh measure.ps1 numbers.
   Exit 0 = all green. Exit 1 = list failures.
 #>
@@ -58,19 +58,9 @@ MOREOPTIONS:->
 Vocal Gender: none | Duration: Auto | Max Mode: Off | Weirdness: 40% | Style Influence: 70% | Variety: Normal | Personalize: Off
 Exclude: Metal
 
-TEXTONLY:->
-
-Intro:
-Verse 1:
-Morning light across the floor,
-Coffee steam and nothing more.
-End:
-
-TRANSLATE:->
-
 INFO:->
 
-request_shape: smoke; summary: smoke ok; vibe: calm; model: v6; filename: smoke_good_v1_20260912-0000.txt; version: v1; created: 2026-09-12 00:00; Suno version: v6 family (v6), reference v2026-09-11; docs: synced 2026-09-12 (help.suno.com)
+request_shape: smoke; summary: smoke ok; vibe: calm; model: v6; lang: en; filename: smoke_good_v1_20260912-0000.txt; version: v1; created: 2026-09-12 00:00; Suno version: v6 family (v6), reference v2026-09-11; docs: synced 2026-09-12 (help.suno.com)
 '@
 $bad = $good -replace '\[Verse 1\]', '[SuperDropopy]'
 $enc = New-Object System.Text.UTF8Encoding $false
@@ -83,15 +73,25 @@ if ($LASTEXITCODE -ne 0) { Bad ('validator rejected the micro good-block with Li
 $badOut = @(& powershell -NoProfile -ExecutionPolicy Bypass -File $validator -Path (Join-Path $tmp 'smoke-bad.txt'))
 if ($LASTEXITCODE -eq 0) { Bad ('validator accepted the micro bad-block: ' + ($badOut -join ' | ')) }
 
-# Cross-field semantics: gender-switch mismatch and a Lyrics line missing from TEXTONLY must both fail.
+# Cross-field semantics: gender-switch mismatch must fail; INFO lang is required.
 $semGender = ($good -replace 'Vocal Gender: none', 'Vocal Gender: Male') -replace '\[Male Vocal: low lead, calm\]', '[Female Vocal: low lead, calm]'
-$semTextonly = $good -replace "Coffee steam and nothing more\.\r?\nEnd:", "End:"
+$noLang = $good -replace '; lang: en', ''
 [System.IO.File]::WriteAllText((Join-Path $tmp 'smoke-gender.txt'), $semGender, $enc)
-[System.IO.File]::WriteAllText((Join-Path $tmp 'smoke-textonly.txt'), $semTextonly, $enc)
+[System.IO.File]::WriteAllText((Join-Path $tmp 'smoke-nolang.txt'), $noLang, $enc)
 $genderOut = @(& powershell -NoProfile -ExecutionPolicy Bypass -File $validator -Path (Join-Path $tmp 'smoke-gender.txt') -LyricsTier M -StylesTier M)
 if ($LASTEXITCODE -eq 0) { Bad ('validator accepted the gender-mismatch block: ' + ($genderOut -join ' | ')) }
-$textonlyOut = @(& powershell -NoProfile -ExecutionPolicy Bypass -File $validator -Path (Join-Path $tmp 'smoke-textonly.txt') -LyricsTier M -StylesTier M)
-if ($LASTEXITCODE -eq 0) { Bad ('validator accepted the missing-TEXTONLY-line block: ' + ($textonlyOut -join ' | ')) }
+$noLangOut = @(& powershell -NoProfile -ExecutionPolicy Bypass -File $validator -Path (Join-Path $tmp 'smoke-nolang.txt') -LyricsTier M -StylesTier M)
+if ($LASTEXITCODE -eq 0) { Bad ('validator accepted a block without INFO lang: ' + ($noLangOut -join ' | ')) }
+
+# Reference provenance: ref_track requires ref_sources (ADAPTERS A7 / RULES R1).
+$refOk = $good -replace 'docs: synced', 'ref_track: Someband - Some Song; ref_sources: MusicBrainz, Discogs; docs: synced'
+$refBad = $good -replace 'docs: synced', 'ref_track: Someband - Some Song; docs: synced'
+[System.IO.File]::WriteAllText((Join-Path $tmp 'smoke-ref-ok.txt'), $refOk, $enc)
+[System.IO.File]::WriteAllText((Join-Path $tmp 'smoke-ref-bad.txt'), $refBad, $enc)
+$refOkOut = @(& powershell -NoProfile -ExecutionPolicy Bypass -File $validator -Path (Join-Path $tmp 'smoke-ref-ok.txt') -LyricsTier M -StylesTier M)
+if ($LASTEXITCODE -ne 0) { Bad ('validator rejected ref_track+ref_sources: ' + ($refOkOut -join ' | ')) }
+$refBadOut = @(& powershell -NoProfile -ExecutionPolicy Bypass -File $validator -Path (Join-Path $tmp 'smoke-ref-bad.txt') -LyricsTier M -StylesTier M)
+if ($LASTEXITCODE -eq 0) { Bad ('validator accepted ref_track without ref_sources: ' + ($refBadOut -join ' | ')) }
 
 $readme = Join-Path $root 'README.md'
 $rt = [System.IO.File]::ReadAllText($readme, [System.Text.Encoding]::UTF8)
@@ -114,7 +114,7 @@ if ($null -eq $pro -or $null -eq $lite) {
     }
   }
 }
-Remove-Item (Join-Path $tmp 'smoke-good.txt'), (Join-Path $tmp 'smoke-bad.txt'), (Join-Path $tmp 'smoke-gender.txt'), (Join-Path $tmp 'smoke-textonly.txt') -Force -ErrorAction SilentlyContinue
+Remove-Item (Join-Path $tmp 'smoke-good.txt'), (Join-Path $tmp 'smoke-bad.txt'), (Join-Path $tmp 'smoke-gender.txt'), (Join-Path $tmp 'smoke-nolang.txt'), (Join-Path $tmp 'smoke-ref-ok.txt'), (Join-Path $tmp 'smoke-ref-bad.txt') -Force -ErrorAction SilentlyContinue
 
 if ($fail.Count -gt 0) { foreach ($m in $fail) { Write-Output $m }; exit 1 }
 Write-Output 'SMOKE-PASS: files, fences, UTF-8 BOM sources, validator micro-blocks, README metrics.'

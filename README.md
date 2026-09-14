@@ -19,29 +19,31 @@ Assembles ready-to-paste song packages for Suno from a vague wish, a finished te
 
 **Two versions — Pro by default.** Pro (`SKILL.md` + full stack) is the default proposal — for strong models: full research, DNA, album corridors, lively dialogue with recommendations. Lite (`LITE.md` + `LITE-TAGS.md`) is proposed only for a narrow window or when the full canon cannot be loaded: micro-steps §§0–10, batch of 3–4 questions compiled into an explanation attached to the prompt, silent-fantasy ban (audible decisions get either an answer or a `~default` mark), railed siblings, default model `v6-mini`, no guide/registry/research. The fill button works in both. Gate `§0` is a handshake, not self-estimate: observable facts (files? shell? web? remembers the window start?) + the **128k** line; proposes Pro/Lite in one line and waits for confirmation; force (`force lite` / `force pro`) — immediately, no questions.
 
-**First-launch setup batch (5 questions).** On first activation in a window, right after the handshake, the skill asks one batch of five questions — each with ready options plus a free-form "your own" field: lyric language (`English`/`Russian`/own), communication language (`Russian`/`English`/own), model (`v6`/`v6-wild`/`v6-mini`/own), detail tier (`S/S`/`M/M`/`L/L`/`XL/XL`/own), scope (`single`/`album corridor`/`sibling`/own). A plain confirm accepts the defaults; asked once, never re-asked in the window, skipped after `force`.
+**First-launch setup batch (6 questions).** On first activation in a window, right after the handshake, the skill asks one batch of six questions: (1) **Suno version** — `v6` / `v6-wild` / `v6-mini` (no custom); (2) **skill variant** — `Pro` / `Lite`; (3) **prompt detail** — "how detailed should the prompt be?": `XL/XL` / `L/L` / `M/M` (default) / `S/S` / `Maximum (5000/1000)`; (4) **track source** — `Reference`(s) (name them; the skill builds the dossier model-first and googles only if it is thin) / `Own style — detailed` (you describe it) / `Own style — brief` (you give a short style, the skill expands it for Suno); (5) **song task** — a free-form theme + roughly how much text (little/medium/a lot) or the full text pasted, or `Instrumental + Hooks and Chops`, or `Instrumental`; (6) **lyrics language** — `English` / `Russian` / own, which wins over the language of any Q5 text. Asked once, never re-asked in the window, skipped after `force`. Communication language and scope use their defaults (`Ru`, `single`).
 
 | Metric (measured) | Lite pair | Pro stack | Delta |
 |---|---|---|---|
-| Instruction chars | 15422 | 95299 | **6.2×** | <!-- M:chars -->
+| Instruction chars | 15738 | 111099 | **7.1×** | <!-- M:chars -->
 
 The marked row is rewritten by `tools/measure.ps1 -UpdateReadme`.
 
 A v1.0.x 10-track benchmark found Pro output only 2.2% longer while quality was 21.1% higher (its artifacts are no longer shipped; the static instruction stack is now about 6.0x larger). Hence: Lite for simple drafts and narrow windows, Pro for complex reference work and finals.
 
-**Internet research (Pro, query-craft).** Not "google a lot" but 2–3 point queries per track: facts (BPM/key), making-of (producer, studio), reception (critics' and musicians' language — paraphrase only). Exact-phrase and `site:` instead of one broad query; ads and ranking ≠ authority; snippets are leads — open and verify; stop rule (same domains twice / no new facts → stop, mark gaps `?`).
+**Internet research (Pro) — Reference Dossier (model-first).** For a detailed reference the skill first drafts the whole dossier **from the model's own knowledge** — genre/era, BPM-key-meter, instrumentation, arrangement arc, vocal, production, moods — and self-rates each field. Only a `thin` result opens the small web corridor: **max 5** exact-phrase/`site:` queries (facts, making-of, reception — paraphrase only); snippets are leads — open and verify; stop when filled or the same domains repeat; remaining gaps stay `?`. Sources (Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM, SecondHandSongs, WhoSampled, Hooktheory — `LINKS.md` §5) are aids, not obligations. The dossier maps fingerprints-first onto the Styles 4 parts; when the reference carries text the skill mirrors its **form** — section map, line lengths/syllables, rhyme scheme — in fully original words (copy the shape, never the words). Names and titles live only in the summary/INFO `ref_*` — never in a Suno field.
 
 **Source base + mini-guide.** `LINKS.md` — link registry with dates (`synced: DD.MM.YYYY` / `never`) in 4 trust tiers: 1 Suno official, 2 quality third parties (useful, not authoritative), 3 community/observed, 4 yours; single-song breakdowns banned — never overflows. `GUIDE.md` — assembly mechanics only (stateless) + `STYLE-NOTES.md` — on-demand style notes (no entry → point fetch → link + entry). Network — 4 triggers: first launch, explicit command (`update docs`, `refresh sources`, `sync docs`...), 3–4 reworks + complaint, style with no registry entry. Stale (10+ days) — one-line hint only.
 
-**Package and controls.** Chunk = ONE fenced block holding the whole 7-tag package (`TRACK` through end of `INFO` value) — the copy-button window; `blocks` and `single:X` views on request. Counters N ≤ tier ceiling and ≤ working caps (lyrics 5000 / styles 1000 / title 100 / exclude 200 — officially unverified; heuristic: title 80, tiers M: 3000/600). Styles always in 4 parts (vocal-anchored base → instruments → triple-stack vocal → single mood, no contradictions). More Options — canonical 7+1 with presets (Obedient/Balanced/Wild). INFO records the setup `model:` (`v6` / `v6-wild` / `v6-mini`); on `v6-mini` the package is marked non-commercial and Pro-only features (Custom Models / Voices / stems / Studio) are not proposed. Translation attached only when song language ≠ comm language.
+**Package and controls.** Chunk = ONE fenced block holding the whole 5-tag package (`TRACK` through end of `INFO` value) — the copy-button window; `blocks` and `single:X` views on request. Counters N ≤ tier ceiling and ≤ working caps (lyrics 5000 / styles 1000 / title 100 / exclude 200 — officially unverified; heuristic: title 80, tiers M: 3000/600). Styles always in 4 parts (vocal-anchored base → instruments → triple-stack vocal → single mood, no contradictions). More Options — canonical 7+1 with presets (Obedient/Balanced/Wild). INFO records the setup `model:` (`v6` / `v6-wild` / `v6-mini`) and `lang:` (the sticky lyrics language); on `v6-mini` the package is marked non-commercial and Pro-only features (Custom Models / Voices / stems / Studio) are not proposed. Clean text (`text`) and translation (`translate`) print on request, outside the block; the parser block carries neither.
+
+**QoL (Pro).** A one-line counter summary sits at the top of every package (`lyrics N/LIMIT · styles N/LIMIT · title N/LIMIT`). Paper edits show a compact **diff preview** (`was → now`, `no diff` suppresses it). `alt-takes` / `2 styles` emit 2–3 named style variants (a/b/c) before locking. `explain` annotates why each descriptor/section was chosen. `sibling of <track>` / `variation` spin a sibling without resetting the branch. `pin <N>` keeps the last N approved tracks in the STATE card.
 
 **Fill into Suno.** `tools/suno-fill.user.js` — the button reads the parser block from the clipboard, forces the Advanced tab, fills 4 text fields (Lyrics/Styles/Title/Exclude) and applies the More Options controls (Vocal Gender, Duration, Max Mode, Personalize, Weirdness, Style Influence, Variety) with read-back. It never clicks Create. When the free/mini model is selected it logs a FREE-TIER notice and applies the safe style cap. The read-only diagnostics command emits one copyable JSON report (fields, selectors, sliders, control rows, tabs, model, caps) — one diagnostic run is enough.
 
-**Validator.** `tools/validate-block.ps1` — an honest **structural** pass (not a full skill validator): 7 tags and block punctuation, MOREOPTIONS grammar, INFO stamps, no brackets in TEXTONLY/TRANSLATE/STYLES, A/B + E cement (incl. instrument cues and exactly one blank line before A-heads), exactly one closer, Styles exactly 4 lines, Exclude ≤3, model caps always, INFO `model:` must be `v6` / `v6-wild` / `v6-mini`, tier ceilings via `-LyricsTier/-StylesTier` flags. Cross-field checks: the Vocal Gender switch must agree with the lead vocal tags, instrumental Styles (`no vocals, instrumental`) forbid vocal tags and sung lines, and every sung Lyrics line must appear in TEXTONLY (FAIL); competing deliveries in one section and repeated Styles descriptors WARN. Free instrument dash cues are matched against a broad real-gear vocabulary, so uncommon instruments pass while invented heads fail; color/name lines are intentionally limited to operator-attested nouns (`Acid Phase`, `Main theme`). Semantics (mood, sung-line vocabulary, rights, render behavior) — eyes on Self-check; the validator does not promise it.
+**Validator.** `tools/validate-block.ps1` — an honest **structural** pass (not a full skill validator): 5 tags and block punctuation, MOREOPTIONS grammar, INFO stamps (incl. `model:` and `lang:`), no brackets in STYLES, A/B + E cement (incl. instrument cues and exactly one blank line before A-heads), exactly one closer, Styles exactly 4 lines, Exclude ≤3, model caps always, INFO `model:` must be `v6` / `v6-wild` / `v6-mini` and `lang:` a 2-3 letter code, tier ceilings via `-LyricsTier/-StylesTier` flags. Cross-field checks: the Vocal Gender switch must agree with the lead vocal tags, and instrumental Styles (`no vocals, instrumental`) forbid vocal tags and sung lines (FAIL); competing deliveries in one section and repeated Styles descriptors WARN. Free instrument dash cues are matched against a broad real-gear vocabulary, so uncommon instruments pass while invented heads fail; color/name lines are intentionally limited to operator-attested nouns (`Acid Phase`, `Main theme`). Semantics (mood, sung-line vocabulary, rights, render behavior) — eyes on Self-check; the validator does not promise it.
 
 **Albums and siblings.** Pro: `lock style for album` — core (genre DNA, vocal, timbres, era) + variation corridor; sibling with freedom clause and ≥3 differences. Lite: railed sibling (`based on <finished track>`: same DNA core, new text + 2–3 named arrangement changes).
 
-**Memory.** Window (model, languages, docs, defaults, variant) lives the whole window, never re-asked. Track (versions, DNA, render log, TEXTONLY) dies with the branch (`new track` / `reset`). Lite remembers only the current version + previous delta. **Works without memory and files too**: stand profiles (Full / Chat+files / Inline / Stateless / No-web) with explicit degradations. The STATE v2 card carries a package fingerprint (`sha256:` under a shell stand, a recomputable `structural:` one elsewhere); exact correction or re-export also requires the matching parser package, verified against the fingerprint. Duties are tagged HARD / HARNESS / MEMORY.
+**Memory.** Window (model, languages, docs, defaults, variant) lives the whole window, never re-asked. Track (versions, DNA, render log, clean-text) dies with the branch (`new track` / `reset`). Lite remembers only the current version + previous delta. **Works without memory and files too**: stand profiles (Full / Chat+files / Inline / Stateless / No-web) with explicit degradations. The STATE v2 card carries a package fingerprint (`sha256:` under a shell stand, a recomputable `structural:` one elsewhere); exact correction or re-export also requires the matching parser package, verified against the fingerprint. Duties are tagged HARD / HARNESS / MEMORY.
 
 **Copyright — hard boundary.** Foreign names/titles/lines — never in fields (reference-only in summary/INFO); foreign hooks never copied even into examples; 1:1 requests — refuse + explain + sound-alike. Hardware/styles/techniques/slang — free dictionary.
 
@@ -51,9 +53,9 @@ API bots, batch generation, billing/keys, covers/video, mastering outside Suno, 
 
 ## Quick start (example first messages)
 
-0. **First run in a window**: answer the five-question setup batch (lyric language, communication language, model, detail tier, scope) — or just confirm the defaults.
+0. **First run in a window**: answer the six-question setup batch (Suno version, Pro/Lite, prompt detail, track source, song task, lyrics language) — or just confirm the defaults.
 1. **From scratch**: `new track. Want dark synthwave, male vocal, ~100 BPM. Single, standard volume.` → answer the batch of pointed questions → get the package.
-2. **By reference**: `new track. Like <band> — <track>, very close but original. English, male vocal.` → asks `detail / general` → sound-alike with DNA breakdown.
+2. **By reference**: `new track. Like <band> — <track>, very close but original. English, male vocal.` → asks `detail / general`; `detail` builds the Reference Dossier from the mandatory sources (MusicBrainz/Discogs/AllMusic/BPM-key) first, then the sound-alike with DNA breakdown.
 3. **Draft**: paste your Lyrics + Styles as-is → get v2 with a breakdown of what was red.
 4. **By link**: drop a Suno track or YouTube/Spotify URL → keep/change breakdown → package.
 5. **Sibling** (Lite): `based on <past track title> make it similar but change the arrangement and rewrite the text fully` → new branch.
@@ -68,6 +70,12 @@ API bots, batch generation, billing/keys, covers/video, mastering outside Suno, 
 | Select/force version | `force lite` / `force pro` |
 | Parser block | `make for parser` |
 | Button fill | `fill for tamper` |
+| Clean text / translation | `text` / `translate` |
+| Sibling / variation (no reset) | `sibling of <track>` / `variation` |
+| Alt style takes | `alt-takes` / `2 styles` |
+| Edit diff preview | `diff` / `no diff` |
+| Explain choices | `explain` |
+| Pin last N tracks | `pin 3` |
 | Fresh docs/guide | `update docs` / `refresh sources` / `sync docs` |
 | Album: style core / sibling | `lock style for album` / `make sibling track` |
 | Switch comm/song language | `talk in English from now` / `talk in Russian from now` |
@@ -88,7 +96,7 @@ API bots, batch generation, billing/keys, covers/video, mastering outside Suno, 
 | `DEFAULTS.md` | Session defaults (Pro: v6, Ru/Eng, chunk, M/M 3000/600, single, W60/SI60; Lite: v6-mini; variant — §E; setup batch — §F) — edit only on explicit order | model (first, Pro) |
 | `GUIDE.md` | Pro runtime knowledge: stateless mechanics — read once per window | model (Pro) |
 | `STYLE-NOTES.md` | Mutable style registry (cap 30000) | model (Pro, on demand) |
-| `LINKS.md` | Runtime registry: 1 Suno official / 2 third-party / 3 community / 4 yours | model (Pro) |
+| `LINKS.md` | Runtime registry: 1 Suno official / 2 third-party / 3 community / 4 yours / 5 reference-research source databases | model (Pro) |
 | `VERSION.md` | Release marker: versions, composition, variants | human |
 | `CHANGELOG.md` | Normative release history (SKILL.md keeps only a pointer) | human |
 | `ENCODING.md` | Encoding policy: text artifacts UTF-8 with BOM, JSON without BOM | human |
@@ -116,13 +124,13 @@ Smoke: files, fences, encoding policy, validator verdicts on embedded micro-bloc
 
 ## Status and self-update
 
-v1.1.0 (2026-09-13), Suno v6 family, embedded docs 2026-09-11. GUIDE 13510/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
+v2.0.0-rc2 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 14963/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
 
 ## FAQ
 
 - **What to ask to start?** Any example from Quick start above — the skill will complete it with pointed questions.
 - **Pro or Lite?** Don't guess: the skill assesses the window and proposes, you confirm. Roughly: strong paid — Pro; free/small — Lite.
-- **Why one block of output?** Default `chunk` = one fenced 7-tag block (copy-button window) for copy-paste/parser. `blocks` or `single:LYRICS` — on request.
+- **Why one block of output?** Default `chunk` = one fenced 5-tag block (copy-button window) for copy-paste/parser. `blocks` or `single:LYRICS` — on request. Clean text (`text`) and translation (`translate`) print on request, outside the block.
 - **Are Suno limits exact?** Three classes, don't mix: verified (Suno publishes no numbers — empty), working (lyrics 5000 / styles 1000 / exclude 200 / title 100 — best known, re-verify live; styles 1000 observed live 2026-09-12, still unpublished by Suno), heuristic (title 80, tiers M: 3000/600 — safe policy). If live Suno disagrees — the box is right, fix the table the same day.
 - **Does the skill browse at my expense?** Pro — only on 4 triggers and point-wise; Lite — never. Link dates are checked locally for free.
 - **Foreign track as reference — allowed?** Yes: facts into research, sound into sound-alike. Foreign names/titles/lines — never in fields, only in summary/INFO.

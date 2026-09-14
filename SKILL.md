@@ -9,7 +9,7 @@ description: Pro composed entry (SKILL-CORE process + RULES policy + SUNO-TAGS d
 
 ## 0. Stand handshake (first message — run ADAPTERS.md A0)
 
-Variant + profile + confirm/force, 30 seconds, observable facts only. **Default proposal: Pro**; propose Lite only for a narrow window or when the full canon cannot be loaded. Force commands (remembered for the window): `force lite`, `force pro`. Mid-window switch only on explicit order — track memory drops. On first launch in the window the setup batch (DEFAULTS.md §F, five questions) runs right after the handshake, before the first brief.
+Variant + profile + confirm/force, 30 seconds, observable facts only. **Default proposal: Pro**; propose Lite only for a narrow window or when the full canon cannot be loaded. Force commands (remembered for the window): `force lite`, `force pro`. Mid-window switch only on explicit order — track memory drops. On first launch in the window the setup batch (DEFAULTS.md §F, six questions) runs right after the handshake, before the first brief.
 
 ## 1. When to fire (entries — process: CORE C1–C2; scope: RULES Scope)
 
@@ -17,7 +17,7 @@ Fire on any explicit track request — a wish from scratch, a finished text, a w
 
 ## 2. Pro runtime: session setup (once per window)
 
-Baseline arrives via the adapter binding (Pro: read `DEFAULTS.md` first, then `GUIDE.md` once — never re-read per track). On first launch in the window, ask the §F setup batch once (five questions) unless forced; never re-ask within the window. Per-run overrides live in window memory only; edit `DEFAULTS.md` itself ONLY on an explicit file-change order (`update defaults`, `make it default`). Languages, translation, and switching: CORE C0. If the embedded reference is older than 30 days (the `Date:` in `VERSION.md` vs today), add one setup-summary line suggesting `update docs` — once per window, never nagging.
+Baseline arrives via the adapter binding (Pro: read `DEFAULTS.md` first, then `GUIDE.md` once — never re-read per track). On first launch in the window, ask the §F setup batch once (six questions) unless forced; never re-ask within the window. Per-run overrides live in window memory only; edit `DEFAULTS.md` itself ONLY on an explicit file-change order (`update defaults`, `make it default`). Languages, translation, and switching: CORE C0. If the embedded reference is older than 30 days (the `Date:` in `VERSION.md` vs today), add one setup-summary line suggesting `update docs` — once per window, never nagging.
 
 ### STATE card → CORE C5 (MEMORY duty)
 
@@ -25,7 +25,7 @@ After every approved track (and on `give state`): CORE C5 STATE v2 block, AFTER 
 
 ## 2.1 Sources & guide (LINKS.md + GUIDE.md)
 
-Consult-first economy: GUIDE.md is read ONCE per window (Pro runtime §2 setup) and worked from memory after — never re-read per track. GUIDE.md holds assembly mechanics only — no pre-baked genre recipes; reusable style vocabulary accrues in STYLE-NOTES.md (mutable registry), one stamped entry per requested style. Per-question order: GUIDE.md first; network only on a GUIDE miss and only inside the network policy below. LINKS.md (same folder, EN) is the source registry: section 1 Suno official (trust first), section 2 high-quality third-party (useful, never authoritative), section 3 community/observed (weakest links), section 4 operator-added. Sections 2-3 hold references, style guides, mixes, style-writing guides — never single-song breakdowns. Every link carries `synced: DD.MM.YYYY` or `synced: never`.
+Consult-first economy: GUIDE.md is read ONCE per window (Pro runtime §2 setup) and worked from memory after — never re-read per track. GUIDE.md holds assembly mechanics only — no pre-baked genre recipes; reusable style vocabulary accrues in STYLE-NOTES.md (mutable registry), one stamped entry per requested style. Per-question order: GUIDE.md first; network only on a GUIDE miss and only inside the network policy below. LINKS.md (same folder, EN) is the source registry: section 1 Suno official (trust first), section 2 high-quality third-party (useful, never authoritative), section 3 community/observed (weakest links), section 4 operator-added, section 5 reference-research source databases (MusicBrainz/Discogs/AllMusic/BPM-key/lineage). Sections 2-3 hold references, style guides, mixes, style-writing guides — never single-song breakdowns. Every link carries `synced: DD.MM.YYYY` or `synced: never`.
 
 Freshness (cheap, local): on first activation in a window, read the LINKS.md dates and compare with today. STALE = 10+ days old. Stale never triggers network by itself — one line in the summary (`sources: N stale (oldest <name>), say update docs to refresh`) and continue working.
 
@@ -45,7 +45,7 @@ README rule (standing): any added or changed user-facing capability MUST update 
 
 One track = one branch. `new track / reset` is the only thing that closes it.
 
-Track steps (brief, frontier, paper edits, lock, export fork, listen-refine, album corridor — incl. reference research, Input D intake, Correction vs Variation, operator input normalization): SKILL-CORE C2–C3 is the single source of truth.
+Track steps (brief, frontier, paper edits, lock, export fork, listen-refine, album corridor — incl. reference research, Input D intake, Correction vs Variation, operator input normalization): SKILL-CORE C2–C3 is the single source of truth. Detailed reference research mechanics (mandatory sources + small corridor): ADAPTERS.md A7.
 
 ## 4. Human output — order: CORE C4; policy: RULES R6–R9.
 
@@ -122,4 +122,4 @@ All human-facing files in this skill are English-only by design (see README.md).
 
 ## Changelog
 
-Full history: `CHANGELOG.md` (normative archive). Latest release: v1.1.0 (2026-09-13); new entries go to CHANGELOG.md per the README rule.
+Full history: `CHANGELOG.md` (normative archive). Latest release: v2.0.0-rc2 (2026-09-14); new entries go to CHANGELOG.md per the README rule.

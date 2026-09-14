@@ -19,7 +19,7 @@
 9. More Options preset from §8 (session default Balanced unless the task says otherwise).
 10. Counters: N ≤ tier ceiling AND ≤ working caps (lyrics 5000 / styles 1000, both officially unverified); below-top is fine, report `filled N — no filler`, never pad. Texture rule: a ceiling that would audibly cost signature texture loses to an explicitly raised tier.
 11. Self-check green (RULES R9 list). No package ships red — fix in the same pass.
-12. Export fork only on explicit trigger (parser / fill); approved version only.
+12. Export fork only on explicit trigger (parser / fill / `text` / `translate` / sibling); approved version only.
 
 ## 2. Volume → structure recipes (pick one, budget inside)
 
@@ -63,6 +63,21 @@ Vocal anchor + subgenre open the line; fingerprints (drum recipe, bass lock, her
 - Tense/dark leans minor, uplift/tender leans major — tendency, not law. Decide once per track; key/mode live in Styles once.
 - Modulation without gated tags: section contrast (intimate low head → belted lift head) + a `[Dynamics: ...]` arc naming the lift + motif transposition as note movement (`C→G`) + arrangement arc words in Styles (`closing lift`). Never a second numeric key, never BPM in Lyrics.
 
+### 4.5 Reference dossier → Styles mapping
+
+A detailed reference (ADAPTERS A7) yields the Reference Dossier; map it fingerprints-first, never paste the dossier itself:
+
+| Dossier field | Goes to |
+|---|---|
+| genre / subgenre / era / lane | Styles part 1 (subgenre + era signature) |
+| bpm / key / meter | Styles part 1 Base, once (never Lyrics) |
+| instrumentation (with roles) | Styles part 2 (hero instruments + rhythm/bass lock); bleeders → Exclude ≤3 |
+| arrangement map | Styles part 1 (arrangement words) + Lyrics heads/modifier lines |
+| vocal (type/register/delivery) | Styles part 3 + B-table vocal heads + the `Vocal Gender` switch |
+| descriptors / moods / themes | Styles part 4 (one tension) + `[Theme: …]` briefs |
+
+Rules: traits become original sound words (R1 — no names/titles anywhere in a field); a dossier field that is missing stays out of the package (no invention); the dossier itself never ships — provenance only, in the summary and INFO `ref_track`/`ref_sources` (optional `ref_dossier`).
+
 ## 5. Vocal specification mechanics (role → texture → delivery → mix cue)
 
 - Order of specification: role (lead/duet/choir/chant/ad-libs/call-response) → texture (breathy, gritty, intimate, polished, raw, soulful, belted, whispered, layered) → delivery (melodic rap, spoken verse, soaring chorus, falsetto, gospel runs, doubled hook, gang vocals) → mix cue (dry close, glossy pop, room reverb, wide stereo harmonies, vocoder layer, distorted edge).
@@ -84,6 +99,7 @@ Vocal anchor + subgenre open the line; fingerprints (drum recipe, bass lock, her
 - Motif line: `[Main motif: instrument, articulation, note movement]` (e.g. `[Main motif: soft piano, staccato pulse, C→G lift]`). Note-level movement stays; numeric tempo/key never.
 - Dynamics line: `[Dynamics: hush verse → wide chorus]` or `[Dynamics: strip to 808 + whisper, detonate on drop]`. One arc per section that earns it.
 - Repeat tails: identical hook words across C1/C2/Final, but a different delivery tail or brief per repeat (C1 belted → C2 raw → Final euphoric). Same memory, no flat render.
+- Prosody mirroring (reference with text, RULES R7): copy the reference's FORM — section map, lines per section, syllable/meter per line, rhyme scheme, refrain behavior — and re-author in fully original words. Same shape and stress, zero shared phrases (chant the rhythm, not the line).
 
 ## 8. More Options presets
 
@@ -138,6 +154,8 @@ When adapting a working direction, swap only one or two dimensions at a time (rh
 A style request with no direct note in `STYLE-NOTES.md` and no sufficient answer in this manual (§4-§7) triggers a targeted web fetch inside the LINKS.md network policy, then exactly one stamped entry in `STYLE-NOTES.md`. Entry shape, cap, and edit discipline live in that file (single source of truth).
 
 ## Changelog
+
+- 2026-09-14: §4.5 Reference dossier → Styles mapping added (ADAPTERS A7 → Styles parts, R1 provenance preserved).
 
 - 2026-09-12: mechanics-only restructure (genre recipes out: lane table, corridors, vocal recipes, mood trios, lane bans, critic shelf; §4.2/§4.3/§4.4 mechanics in; §12 on-demand style notes with stamped entry shape).
 

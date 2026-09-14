@@ -10,15 +10,15 @@
 
 1. Forced order wins immediately: `force lite` → stay; `force pro` → hand over to `SKILL.md` after a one-line confirm. Remember for the window.
 2. Else pick by the 128k line and loadability: **default proposal is Pro** when the full Pro canon is available. Missing shell/web/memory alone uses Pro degradation and does not force Lite; a narrow window or unavailable full canon → propose Lite. Unsure → default Pro unless loadability clearly fails.
-3. Confirm in one line and wait: `Running <Pro|Lite> (stand: <files/shell/web/memory as yes/no>) — confirm or say force.` No files → ask the operator for pastes, no bookkeeping. No shell → count by hand (§4 checklist). No memory between turns → work from the STATE card only (§3), demand it when missing. No web → Input D is paste-only. On first launch in the window (unless forced), confirm the five setup defaults once (see §1).
+3. Confirm in one line and wait: `Running <Pro|Lite> (stand: <files/shell/web/memory as yes/no>) — confirm or say force.` No files → ask the operator for pastes, no bookkeeping. No shell → count by hand (§4 checklist). No memory between turns → work from the STATE card only (§3), demand it when missing. No web → Input D is paste-only. On first launch in the window (unless forced), confirm the six setup defaults once (see §1).
 
 ## 1. Setup (once per window, never re-ask)
 
 - model: `v6-mini` (free access; never invent model names).
 - comm: Ru; lyrics: Eng (per-message switch allowed, §top).
-- presentation: `chunk` (one 7-tag block, §4). tiers: lyrics M (≤3000 chars) / styles M (≤600 chars). Tier = ceiling only, no lower bound; working caps (lyrics 5000 / styles 1000, officially unverified) stay above. Below-top is fine, report `filled N — no filler`, never pad.
+- presentation: `chunk` (one 5-tag block, §4). tiers: lyrics M (≤3000 chars) / styles M (≤600 chars). Tier = ceiling only, no lower bound; working caps (lyrics 5000 / styles 1000, officially unverified) stay above. Below-top is fine, report `filled N — no filler`, never pad.
 - Per-run overrides live in window memory only.
-- First launch in the window: confirm the five setup defaults in one batch (lyrics language, communication language, model, detail tier, scope) — each with the listed options plus a free-form "your own"; a plain confirmation accepts the defaults. Skip after `force pro`/`force lite`; never re-ask within the window.
+- First launch in the window: confirm the six setup defaults in one batch (Suno version `v6`/`v6-wild`/`v6-mini`; confirm `Lite`; prompt detail `XL/XL`/`L/L`/`M/M`/`S/S`/`Maximum`; track source — `Reference`(s) / `Own style — detailed` / `Own style — brief`; song task — a theme + little/medium/a lot or the full text, or `Instrumental + Hooks and Chops`, or `Instrumental`; lyrics language `English`/`Russian`/own, which wins over the Q5 text language) — a plain confirmation accepts the defaults. Skip after `force pro`/`force lite`; never re-ask within the window.
 - Modes: runtime by default (zero file writes — findings for files become one-line chat notes); maintenance only on explicit operator order.
 
 ## 2. Inputs (4, one line each)
@@ -46,9 +46,9 @@ Layout swaps (EN<->RU whole/chunk — map EN->RU, reverse for RU->EN: `qй wц e
 
 After every approved track (and on `give state`): `STATE v2 | lite | <model> | <comm>/<lyrics> | <tiers> | DNA: <lane, voice, BPM> | TRACK: <title> v<N> | file: <filename> | FP: structural lyrics=<N> styles=<N> | CHANGES: <one line>`. This restores identity/DNA/version/CHANGES only. Exact correction, re-export, or lyric recovery needs the previous parser package; recompute the FP and verify before claiming exact restore, ask when it is absent, never claim lossless. Never invent STATE from memory.
 
-## 4. Output block (chunk, fixed order, 7 tags)
+## 4. Output block (chunk, fixed order, 5 tags)
 
-`TRACK:->` → `LYRICS:->` → `STYLES:->` → `MOREOPTIONS:->` (7-field line + single newline + `Exclude:` line, no blank inside) → `TEXTONLY:->` (structure headings + sung lines, no brackets) → `TRANSLATE:->` (mirror of TEXTONLY; tag stays with EMPTY value when nothing to translate) → `INFO:->` (exactly one physical value line, working cap 4000 chars: request shape / summary / vibe / canonical filename / version / time / Suno version / docs stamp / `ref_*` when used). Raw validator input begins with `TRACK:->` and excludes Markdown fences, wrapper prose and STATE.
+`TRACK:->` → `LYRICS:->` → `STYLES:->` → `MOREOPTIONS:->` (7-field line + single newline + `Exclude:` line, no blank inside) → `INFO:->` (exactly one physical value line, working cap 4000 chars: request shape / summary / vibe / model / lang / canonical filename / version / time / Suno version / docs stamp / `ref_*` when used). On request only, outside the block: `text` (clean sung text, no brackets) and `translate` (mirror). Raw validator input begins with `TRACK:->` and excludes Markdown fences, wrapper prose and STATE. (Alt-takes, diff preview, explain mode and the pin table are Pro extras — not in Lite.)
 - Key tag ALONE on its line; exactly one blank line after it (before the value) and before every tag except `TRACK:->`.
 - Counter `N` = every character incl. spaces, line breaks, `[...]`. `N <= tier-top` AND `N <= LIMIT`, always. Counter line lives AFTER the fenced block in `blocks` view, never inside paste-ready text. Count by hand (no shell on most Lite stands) — the §4 Self-check list doubles as your manual checklist, tick every box.
 - Self-check (all green or fix in the same pass — red never ships): title≤80 / lyrics+styles within tier top + LIMIT / no prose in Styles / no genre-mood-tempo words in sung lines / heads from `LITE-TAGS.md` A/B only, briefs E only / 7+1 complete (`Exclude: none` when empty), Variety ≤Extra (Max only on explicit freedom), Personalize Off / one mood tension / no artist names, no unlicensed third-party text.
@@ -66,7 +66,7 @@ After every approved track (and on `give state`): `STATE v2 | lite | <model> | <
 - Heads ONLY from `LITE-TAGS.md` A/B (+aliases, numbered repeats `[Verse 1]`, `[Chorus 1]`). Unknown head → do not emit: map via LITE-TAGS D, or ask / upgrade to Pro. Never invent.
 - Exactly one blank line before each A-head; B-heads, briefs and sung lines glued under it — no blanks inside a section.
 - Briefs ≤8 words (`[Transition: ...]`, `[Main motif: ...]`, `[Dynamics: ...]`, `[Drums: ...]`-style instrument cues); head tails ≤8 words, dash tails ≤45 chars / 3-4 keywords.
-- Sung lines 4-8 words (rap/spoken/chants/slow-cinematic exempt); chorus ≤4 content lines + written-out repeats with varied tails (same hook words, new delivery each repeat); no `(x2)`; parens are SUNG except `(Backing: LINE)` of 1-4 words and line-initial `(direction) text` (dropped in TEXTONLY).
+- Sung lines 4-8 words (rap/spoken/chants/slow-cinematic exempt); chorus ≤4 content lines + written-out repeats with varied tails (same hook words, new delivery each repeat); no `(x2)`; parens are SUNG except `(Backing: LINE)` of 1-4 words and line-initial `(direction) text` (dropped in the on-request clean text).
 - Exactly one closer: `[Outro]`, `[Ending]`, `[Fade Out]`, `[End]`, `[Big Finish]`. No non-English heads. No numeric BPM/key in Lyrics, ever.
 - Head budget: at most 5–6 distinct structural roles per song, unless the arrangement explicitly needs the full standard set (Intro/Verse/Pre-Chorus/Chorus/Bridge/Final Chorus/Outro) — extras get cut.
 
@@ -81,7 +81,7 @@ No real artist names as style targets, no unlicensed third-party titles or lyric
 
 ## 9. Fill export (explicit order only)
 
-Same 7-tag block + 4 steps: (1) copy the block; (2) open logged-in `https://suno.com/create` (Custom/Advanced tab — the button forces Advanced); (3) press the SunoFill button (`tools/suno-fill.user.js` — 4 text fields + the seven More Options controls, filled with read-back); (4) eyes check, press Create yourself. The script NEVER clicks Create. `Exclude: none` clears the Exclude field.
+Same 5-tag block + 4 steps: (1) copy the block; (2) open logged-in `https://suno.com/create` (Custom/Advanced tab — the button forces Advanced); (3) press the SunoFill button (`tools/suno-fill.user.js` — 4 text fields + the seven More Options controls, filled with read-back); (4) eyes check, press Create yourself. The script NEVER clicks Create. `Exclude: none` clears the Exclude field.
 
 When validating Lite from this folder, pass `-TagsPath LITE-TAGS.md` together with the active tier flags so the frozen Lite vocabulary, not the larger Pro dictionary, is enforced.
 

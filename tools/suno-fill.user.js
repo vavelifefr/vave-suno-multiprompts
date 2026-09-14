@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        SunoFill
 // @namespace   vave-suno-multiprompts
-// @version     3.9.0
+// @version     3.10.0
 // @description Fill Lyrics / Styles / Title / Exclude AND the More Options controls on suno.com/create from the §5 parser block, plus an exhaustive read-only diagnostics dump. NEVER clicks Create.
 // @match       https://suno.com/create*
 // @match       https://www.suno.com/create*
@@ -10,7 +10,7 @@
 // ==/UserScript==
 
 /*
- * SunoFill v3.9.0 — text fill + diagnostics for vave-suno-multiprompts (§5.1).
+ * SunoFill v3.10.0 — text fill + diagnostics for vave-suno-multiprompts (§5.1).
  *
  * WHAT IT DOES
  *   - Fill: reads the §5 parser block from the clipboard and writes the four text
@@ -33,14 +33,14 @@
  * Lexical Lyrics editor (one synthetic beforeinput, wait ~450ms, verify, else
  * synthetic paste, else insertHTML, else textContent — the wait is what keeps
  * the working path while avoiding a double insert).
- * Buffer policy: the script slices [TRACK:-> .. TEXTONLY:->) and ignores the tail
- * (TEXTONLY / TRANSLATE / INFO never reach the DOM by construction).
+ * Buffer policy: the script slices [TRACK:-> .. INFO:->) and ignores the tail
+ * (INFO / STATE never reach the DOM by construction).
  */
 
 (function () {
   'use strict';
 
-  var VERSION = '3.9.0';
+  var VERSION = '3.10.0';
   var CREATE_RE = /^https:\/\/(www\.)?suno\.com\/create/;
   var KEY_TAG_RE = /^[A-Z]+:->$/;
   var FREE_MODEL_RE = /mini/i;          // free-tier model family
@@ -531,9 +531,9 @@
         var blockModel = blockModelMatch ? blockModelMatch[1] : null;
         var cutStart = clip.indexOf('TRACK:->');
         if (cutStart >= 0) {
-          var cutEnd = clip.indexOf('TEXTONLY:->');
+          var cutEnd = clip.indexOf('INFO:->');
           clip = (cutEnd > cutStart) ? clip.slice(cutStart, cutEnd) : clip.slice(cutStart);
-          console.log('SunoFill: clipboard sliced to [TRACK:-> .. TEXTONLY:->), tail ignored');
+          console.log('SunoFill: clipboard sliced to [TRACK:-> .. INFO:->), tail ignored');
         }
         var lyrics = section(clip, 'LYRICS:->');
         var styles = section(clip, 'STYLES:->');
