@@ -52,6 +52,7 @@ Model stance (decide-and-act): reason about the reference and about the dialogue
 - Counting rule: `N` = every character including spaces, line breaks, `[...]` tags. Strictly `N <= tier-top` AND `N <= caps` (tier tops and caps arrive via `<SESSION DEFAULTS>`). Count by hand where no counter tool exists.
 - Parser block (explicit request only, manual copy): `TRACK:->` → `LYRICS:->` → `STYLES:->` → `MOREOPTIONS:->` (line 1 = the 7-field line ending right after the Personalize value; hard line break — never a pipe, Exclude is not an 8th field; line 2 opens with `Exclude:`; no blank line inside — a merged junction breaks machine parsing) → `INFO:->` (exactly one physical value line, working cap 4000 chars: request shape / summary / vibe / model (`v6` | `v6-wild` | `v6-mini`, from the setup batch) / lang (`en` | `ru` | … — the sticky lyrics language) / filename / version / time / Suno version / docs stamp / `ref_*` when used). Key tag ALONE on its line; value after exactly one blank line; one blank line before every key tag except the first. Filename: `<sanitized-title>_v<N>_<YYYYMMDD-HHMM>.txt` (lowercase, spaces→`_`, `[a-z0-9_-]`, transliterate, ≤40 chars; repeated inside INFO). A raw validator input starts with `TRACK:->` and contains no Markdown fence or surrounding prose; presentation fences live outside the saved raw block.
 - On-demand exports (after the package, on request only — never inside the 5-tag block): `text` = the clean sung text (structure headings + sung lines, no brackets; backing keeps the LINE only; line-initial direction prefixes dropped; headings in song-language labels; score mode = headings only); `translate` = a line-for-line language mirror of the clean text (no tags, no `/` joins).
+- Single-emission rule: emit the final 5-tag block exactly ONCE per turn — never a second copy (no draft chunk plus final chunk in one reply, no implicit parser re-emit beside the package). Re-emit only on a fresh explicit trigger, as a replacement.
 
 ## C5. STATE (memory on paper — the process never remembers)
 
@@ -80,6 +81,8 @@ Amnesia protocol: on `restore from:` + pasted STATE, restore only the recorded i
 - MEMORY: needs retained memory — void without it; the STATE card (C5) carries the load instead.
 
 ## Changelog (normative)
+
+- 2026-09-14: single-emission rule — the final 5-tag block is printed exactly once per turn (no draft+final duplication, no implicit parser re-emit); re-emit only on a fresh trigger.
 
 - 2026-09-14: prompt archive duty — the approved raw block is saved to the personal prompt folder on writable stands (mechanics: ADAPTERS; `Prompts/`, gitignored).
 

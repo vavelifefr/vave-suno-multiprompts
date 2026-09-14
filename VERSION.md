@@ -1,6 +1,6 @@
 ﻿# VERSION.md — release marker for vave-suno-multiprompts
 
-- Version: 2.0.0-rc6
+- Version: 2.0.0-rc7
 - Date: 2026-09-14
 - Fork: cloned from vave-suno-prompts on 2026-09-12 (its test folder was excluded).
 - Canon (normative): SKILL.md (Pro composed entry) + SKILL-CORE.md (process) + RULES.md (policy) + SUNO-TAGS.md (vocabulary) + ADAPTERS.md (runtime bindings); LITE.md + LITE-TAGS.md (Lite frozen pair); DEFAULTS.md (Pro runtime state).

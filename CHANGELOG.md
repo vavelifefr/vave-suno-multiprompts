@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc6
+- Version: 2.0.0-rc7
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc7 (pre-release) — **single-emission rule** (the final 5-tag block is printed exactly ONCE per turn; no draft+final duplication, no implicit parser re-emit beside the package; re-emit only on a fresh trigger as a replacement — CORE C4, ADAPTERS) and **adaptive Q4** (on `Reference`, capture the track name(s) in the same question; if empty, ask once before Q5 — DEFAULTS §F, ADAPTERS A0.4).
 
 - 2026-09-14: v2.0.0-rc6 (pre-release) — setup-batch refinement: Q4 = `Reference` → Q5 shows `As in the reference` **first**, then the other options (theme + little/medium/a lot or full text, `Instrumental + Hooks and Chops`, `Instrumental`) so an instrumental or a different text volume is still possible; Q4 = `Own style` → the own/instrumental options only. Synced DEFAULTS §F, ADAPTERS A0.4, VERSION, README.
 
