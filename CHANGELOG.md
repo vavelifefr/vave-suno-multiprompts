@@ -1,18 +1,16 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc4
+- Version: 2.0.0-rc5
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc5 (pre-release) — setup-batch logic fix: **Q5 (song task) is conditional on Q4 (track source)**. `Reference` → exactly one option `As in the reference`; `Own style — detailed/brief` → the own-task options (theme + little/medium/a lot or full text, `Instrumental + Hooks and Chops`, `Instrumental`). Synced DEFAULTS §F, ADAPTERS A0.4, VERSION, README.
 
 - 2026-09-14: v2.0.0-rc4 (pre-release) — **personal prompt archive**: on writable stands every approved package is saved to `Prompts/<title>_<dd_mm_yy>.txt` (raw 5-tag block, spaces → `_`, collisions `_HHMM`). Folder is gitignored (only `.gitkeep` tracked) so prompt files never reach GitHub; `check-encoding` skips `Prompts/`. Added `archive:` toggle (DEFAULTS §G), CORE C2 step 5 archive duty, ADAPTERS mechanics, README feature + map row.
 
 - 2026-09-14: v2.0.0-rc3 (pre-release) — formalized the dossier→package mapping: GUIDE §4.5 is now the single-source table (adds a **prosody** row and the dossier → primary-prompt → 5-tag-chunk chain note); ADAPTERS A7 prose replaced by a pointer to it. Docs-only consistency pass.
-- 2026-09-14: v2.0.0-rc3 (pre-release) — formalized the dossier→package mapping: GUIDE §4.5 is now the single-source table (adds a **prosody** row and the dossier → primary-prompt → 5-tag-chunk chain note); ADAPTERS A7 prose replaced by a pointer to it. Docs-only consistency pass.
 
 - 2026-09-14: v2.0.0-rc2 (pre-release) — QoL pack: **diff preview** on paper edits (`was → now`, `no diff`), **alt-takes** (`alt-takes` / `2 styles` → a/b/c style variants), **explain** mode (reasons next to chosen descriptors), **counter summary line** at the top of the human order, and a **`PINNED`** last-N-tracks table in STATE v2 (`pin <N>`, default 3). Documented in CORE C2/C4/C5, DEFAULTS §G, ADAPTERS tools map, README, LITE (Pro-only note).
-- 2026-09-14: v2.0.0-rc2 (pre-release) — QoL pack: **diff preview** on paper edits (`was → now`, `no diff`), **alt-takes** (`alt-takes` / `2 styles` → a/b/c style variants), **explain** mode (reasons next to chosen descriptors), **counter summary line** at the top of the human order, and a **`PINNED`** last-N-tracks table in STATE v2 (`pin <N>`, default 3). Documented in CORE C2/C4/C5, DEFAULTS §G, ADAPTERS tools map, README, LITE (Pro-only note).
-
-- 2026-09-14: v2.0.0-rc1 (pre-release) — parser block reduced to **5 tags** (`TRACK`→`LYRICS`→`STYLES`→`MOREOPTIONS`→`INFO`); `TEXTONLY`/`TRANSLATE` removed and become **on-request exports** (`text` / `translate`, printed outside the block). INFO gains `lang:` and the lyrics language is **sticky for the branch**. **Decide-and-act** model stance. Quick sibling/variation commands without reset. Lite mirrors Pro. Validator: 5 tags, `lang:` required; smoke updated. Userscript v3.10.0 slices `[TRACK:-> .. INFO:->)`.
 
 - 2026-09-14: v2.0.0-rc1 (pre-release) — parser block reduced to **5 tags** (`TRACK`→`LYRICS`→`STYLES`→`MOREOPTIONS`→`INFO`); `TEXTONLY`/`TRANSLATE` removed and become **on-request exports** (`text` / `translate`, printed outside the block). INFO gains `lang:` and the lyrics language is **sticky for the branch** (edits in any language never switch it). **Decide-and-act** model stance (reason about reference + dialogue, then act with one short justification). Quick sibling/variation commands (`sibling of <track>` / `variation`) without reset. Lite mirrors Pro (no TEXTONLY/TRANSLATE). Validator: 5 tags, `lang:` required, TEXTONLY/TRANSLATE checks removed; smoke fixtures/probes updated. Userscript v3.10.0 slices `[TRACK:-> .. INFO:->)`. Docs synced (CORE/RULES/ADAPTERS/DEFAULTS/GUIDE/LITE/SUNO-TAGS/README/VERSION).
 

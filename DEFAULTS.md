@@ -43,7 +43,9 @@ On first activation in a window, **after** the §E variant handshake and **befor
 2. **Skill variant**: `Pro` (default) / `Lite` — exactly two options. Confirms or overrides the §E handshake proposal; `Lite` switches the window to LITE.md + LITE-TAGS.md.
 3. **Prompt detail** ("How detailed should the prompt be?"): `XL/XL (5000/900)` / `L/L (4000/800)` / `M/M (3000/600, default)` / `S/S (1000/250)` / `Maximum (5000/1000)` — listed high→low, with Maximum (the working caps) last; the numbers are lyrics/styles character ceilings (RULES R3).
 4. **Track source** (what the track will be — where the style comes from): `Reference` (one or several) — name them and the skill builds the dossier **model-first** (own knowledge), googling only if the result is thin (ADAPTERS A7) / `Own style — detailed` — you describe the style yourself in detail and the skill uses it as given / `Own style — brief` — you give a short style and the skill expands it into a detailed Suno-ready style.
-5. **Song task** (what to make — this is NOT the language choice): one free-form answer — a theme plus roughly how much text (`little` / `medium` / `a lot`) or the full text pasted as-is — **or** `Instrumental + Hooks and Chops`, **or** `Instrumental`.
+5. **Song task** (what to make — this is NOT the language choice). **Conditional on Q4:**
+   - Q4 = `Reference` → exactly **one** option: `As in the reference` (the song mirrors the reference's theme and form; the words stay fully original under R1). No own-text or instrumental options here.
+   - Q4 = `Own style — detailed` / `Own style — brief` → own task: one free-form answer (a theme plus roughly how much text — `little` / `medium` / `a lot` — or the full text pasted as-is), **or** `Instrumental + Hooks and Chops`, **or** `Instrumental`.
 6. **Lyrics language**: `English` (default) / `Russian` / your own. This question **wins** over the language of any text supplied in Q5: if Q5's text is in another language, re-author / translate it into the Q6 language. For an instrumental task (Q5) the language is ignored. The choice is **sticky for the branch** (`lang:` in INFO).
 
 ## G. QoL toggles (optional, window memory only)
