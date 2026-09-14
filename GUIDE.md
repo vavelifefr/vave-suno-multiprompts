@@ -65,15 +65,16 @@ Vocal anchor + subgenre open the line; fingerprints (drum recipe, bass lock, her
 
 ### 4.5 Reference dossier → Styles mapping
 
-A detailed reference (ADAPTERS A7) yields the Reference Dossier; map it fingerprints-first, never paste the dossier itself:
+A detailed reference (ADAPTERS A7) yields the Reference Dossier; map it fingerprints-first, never paste the dossier itself. The model's **primary prompt** is the Styles draft derived here; the 5-tag chunk (CORE C4) is just that draft wrapped together with Lyrics, More Options and INFO.
 
 | Dossier field | Goes to |
 |---|---|
 | genre / subgenre / era / lane | Styles part 1 (subgenre + era signature) |
 | bpm / key / meter | Styles part 1 Base, once (never Lyrics) |
 | instrumentation (with roles) | Styles part 2 (hero instruments + rhythm/bass lock); bleeders → Exclude ≤3 |
-| arrangement map | Styles part 1 (arrangement words) + Lyrics heads/modifier lines |
+| arrangement map | Styles part 1 (arrangement words) + Lyrics section map |
 | vocal (type/register/delivery) | Styles part 3 + B-table vocal heads + the `Vocal Gender` switch |
+| prosody (when the reference carries text) | Lyrics form: section map, line lengths/syllables, rhyme scheme, refrain behavior — original words only |
 | descriptors / moods / themes | Styles part 4 (one tension) + `[Theme: …]` briefs |
 
 Rules: traits become original sound words (R1 — no names/titles anywhere in a field); a dossier field that is missing stays out of the package (no invention); the dossier itself never ships — provenance only, in the summary and INFO `ref_track`/`ref_sources` (optional `ref_dossier`).
@@ -154,6 +155,8 @@ When adapting a working direction, swap only one or two dimensions at a time (rh
 A style request with no direct note in `STYLE-NOTES.md` and no sufficient answer in this manual (§4-§7) triggers a targeted web fetch inside the LINKS.md network policy, then exactly one stamped entry in `STYLE-NOTES.md`. Entry shape, cap, and edit discipline live in that file (single source of truth).
 
 ## Changelog
+
+- 2026-09-14: §4.5 adds the prosody row + the dossier → primary-prompt → 5-tag-chunk chain note (single source of truth for the mapping).
 
 - 2026-09-14: §4.5 Reference dossier → Styles mapping added (ADAPTERS A7 → Styles parts, R1 provenance preserved).
 

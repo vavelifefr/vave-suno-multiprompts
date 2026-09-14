@@ -53,7 +53,7 @@ Trigger: the `detail` branch of CORE C2 step 2 (the brief names a real band/arti
 5. **Sources are aids, not obligations.** No source is mandatory and no stand is blocked by missing one. Useful destinations if you do search: Wikipedia, AllMusic, Discogs, MusicBrainz, Beatport, SongBPM/MusicStax, SecondHandSongs, WhoSampled, Hooktheory (registered in `LINKS.md` §5). Any reliable page is fine.
 6. **Quality bar:** "would this let a producer recreate the feel?" If not, dig one more step (own knowledge or web) before writing the package.
 
-Dossier → package mapping: genre/subgenre/era → Styles parts 1 and 4; instrumentation + arrangement → Styles part 2 (+ Exclude ≤3 for bleeders); vocal → Styles part 3 + B-table vocal heads + the `Vocal Gender` switch; BPM/key/meter → Styles Base once; descriptors/moods → Styles part 4 (one tension); prosody (when the reference carries text) → Lyrics section map, line lengths/syllables and rhyme scheme, re-authored with original words only. R1 restated: the dossier is provenance — real names/titles appear ONLY in the human summary and INFO `ref_track`/`ref_sources` (optional compact `ref_dossier`), NEVER in Lyrics/Styles/Title/Exclude, and hook lines are never copied.
+Dossier → package mapping (single source of truth: GUIDE §4.5 table): genre/era + instrumentation + vocal + BPM/key + moods → the four Styles parts; arrangement + prosody → Lyrics; bleeders → Exclude ≤3. R1 restated: the dossier is provenance — real names/titles appear ONLY in the human summary and INFO `ref_track`/`ref_sources` (optional compact `ref_dossier`), NEVER in Lyrics/Styles/Title/Exclude, and hook lines are never copied.
 
 ## Bindings matrix (inject → source per adapter)
 

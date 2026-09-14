@@ -1,9 +1,12 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc2
+- Version: 2.0.0-rc3
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
 
+- 2026-09-14: v2.0.0-rc3 (pre-release) — formalized the dossier→package mapping: GUIDE §4.5 is now the single-source table (adds a **prosody** row and the dossier → primary-prompt → 5-tag-chunk chain note); ADAPTERS A7 prose replaced by a pointer to it. Docs-only consistency pass.
+
+- 2026-09-14: v2.0.0-rc2 (pre-release) — QoL pack: **diff preview** on paper edits (`was → now`, `no diff`), **alt-takes** (`alt-takes` / `2 styles` → a/b/c style variants), **explain** mode (reasons next to chosen descriptors), **counter summary line** at the top of the human order, and a **`PINNED`** last-N-tracks table in STATE v2 (`pin <N>`, default 3). Documented in CORE C2/C4/C5, DEFAULTS §G, ADAPTERS tools map, README, LITE (Pro-only note).
 - 2026-09-14: v2.0.0-rc2 (pre-release) — QoL pack: **diff preview** on paper edits (`was → now`, `no diff`), **alt-takes** (`alt-takes` / `2 styles` → a/b/c style variants), **explain** mode (reasons next to chosen descriptors), **counter summary line** at the top of the human order, and a **`PINNED`** last-N-tracks table in STATE v2 (`pin <N>`, default 3). Documented in CORE C2/C4/C5, DEFAULTS §G, ADAPTERS tools map, README, LITE (Pro-only note).
 
 - 2026-09-14: v2.0.0-rc1 (pre-release) — parser block reduced to **5 tags** (`TRACK`→`LYRICS`→`STYLES`→`MOREOPTIONS`→`INFO`); `TEXTONLY`/`TRANSLATE` removed and become **on-request exports** (`text` / `translate`, printed outside the block). INFO gains `lang:` and the lyrics language is **sticky for the branch**. **Decide-and-act** model stance. Quick sibling/variation commands without reset. Lite mirrors Pro. Validator: 5 tags, `lang:` required; smoke updated. Userscript v3.10.0 slices `[TRACK:-> .. INFO:->)`.
