@@ -89,7 +89,7 @@ Dossier → package mapping (single source of truth: GUIDE §4.5 table): genre/e
 
 - 2026-09-14: A7 reworked to model-first — the model attempts the full dossier from its own knowledge, self-assesses (`thin`), and only then opens the ≤5-query corridor; the source list is now optional aids, not a mandatory set.
 
-- 2026-09-14: A7 Reference research added (mandatory MusicBrainz + Discogs + AllMusic + BPM/key set, local Demucs/librosa add-on, ≤5-query corridor, dossier→package mapping, R1 provenance). CORE C2 detail branch points here.
+- 2026-09-14: A7 Reference research added (mandatory MusicBrainz + Discogs + AllMusic + BPM/key set, local Demucs/librosa add-on, ≤5-query corridor, dossier→package mapping, R1 provenance) — **superseded same day by the model-first rework above**. CORE C2 detail branch points here.
 
 - 2026-09-13: Pro default + first-launch setup batch (A0 step 4); A2/A3 merged (chat-with-files + long-context chat) and renumbered A0–A6; manual-checklist pointer fixed to RULES R9 / CORE C4.
 

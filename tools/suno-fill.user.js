@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name        SunoFill
 // @namespace   vave-suno-multiprompts
-// @version     3.10.0
+// @version     3.10.1
 // @description Fill Lyrics / Styles / Title / Exclude AND the More Options controls on suno.com/create from the §5 parser block, plus an exhaustive read-only diagnostics dump. NEVER clicks Create.
 // @match       https://suno.com/create*
 // @match       https://www.suno.com/create*
@@ -10,7 +10,7 @@
 // ==/UserScript==
 
 /*
- * SunoFill v3.10.0 — text fill + diagnostics for vave-suno-multiprompts (§5.1).
+ * SunoFill v3.10.1 — text fill + diagnostics for vave-suno-multiprompts (§5.1).
  *
  * WHAT IT DOES
  *   - Fill: reads the §5 parser block from the clipboard and writes the four text
@@ -40,7 +40,7 @@
 (function () {
   'use strict';
 
-  var VERSION = '3.10.0';
+  var VERSION = '3.10.1';
   var CREATE_RE = /^https:\/\/(www\.)?suno\.com\/create/;
   var KEY_TAG_RE = /^[A-Z]+:->$/;
   var FREE_MODEL_RE = /mini/i;          // free-tier model family
@@ -560,7 +560,7 @@
           console.error('SunoFill MODEL MISMATCH: the block says "' + blockModel + '" but the UI model chip shows "' + uiModel.selected + '" — switch the model in Suno or re-run the skill; caps/limits follow the selected model');
         }
         var free = !!(blockModel && FREE_MODEL_RE.test(blockModel)) || !!(uiModel.selected && FREE_MODEL_RE.test(uiModel.selected));
-        if (free) console.log('SunoFill FREE-TIER: v6-mini/free — non-commercial, public by default, no stems/Studio; sliders/selects and Pro-only features are left untouched.');
+        if (free) console.log('SunoFill FREE-TIER: v6-mini/free — non-commercial, public by default, no stems/Studio; the seven More Options controls from the block are still applied, only Pro-only features are left untouched.');
         if (free && styles.length > FREE_STYLE_CAP) {
           styles = styles.slice(0, FREE_STYLE_CAP).replace(/,[^,]*$/, '');
           console.log('SunoFill FREE-TIER: trimmed Styles to ' + styles.length + ' chars (cap ' + FREE_STYLE_CAP + ')');

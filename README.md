@@ -1,6 +1,6 @@
 ﻿# vave-suno-multiprompts — README
 
-Assembles ready-to-paste song packages for Suno from a vague wish, a finished text, a weak draft, or a link: Lyrics + Styles + More Options, pasted into Suno by hand or via a script button. No code in outputs, no Suno automation, no audio. This file is the feature showcase — the skill answers "what can you do?", "what are you for?", "how do you work?" from it. Living file: the skill updates it itself when functionality changes (rule in `SKILL.md` §2.1).
+Assembles ready-to-paste song packages for Suno from a vague wish, a finished text, a weak draft, or a link: Lyrics + Styles + More Options, pasted into Suno by hand or via a script button that fills the fields (its only UI action — it never presses Create). No code in outputs, no audio. This file is the feature showcase — the skill answers "what can you do?", "what are you for?", "how do you work?" from it. Living file: the skill updates it itself when functionality changes (rule in `SKILL.md` §2.1).
 
 > Mission (prime directive): write prompts that obey the `SKILL.md` rules and the current Suno docs — above speed, brevity, and cleverness.
 
@@ -23,11 +23,11 @@ Assembles ready-to-paste song packages for Suno from a vague wish, a finished te
 
 | Metric (measured) | Lite pair | Pro stack | Delta |
 |---|---|---|---|
-| Instruction chars | 15738 | 115076 | **7.3×** | <!-- M:chars -->
+| Instruction chars | 15759 | 115419 | **7.3×** | <!-- M:chars -->
 
 The marked row is rewritten by `tools/measure.ps1 -UpdateReadme`.
 
-A v1.0.x 10-track benchmark found Pro output only 2.2% longer while quality was 21.1% higher (its artifacts are no longer shipped; the static instruction stack is now about 6.0x larger). Hence: Lite for simple drafts and narrow windows, Pro for complex reference work and finals.
+A v1.0.x 10-track benchmark found Pro output only 2.2% longer while quality was 21.1% higher (its artifacts are no longer shipped; the static instruction stack is now about 7.3x larger). Hence: Lite for simple drafts and narrow windows, Pro for complex reference work and finals.
 
 **Prompt archive (personal).** On workspace stands every approved package is saved to `Prompts/<title>_<dd_mm_yy>.txt` — the raw 5-tag block, no fences (spaces → `_`; collisions get `_HHMM`). The folder is **gitignored** (only `.gitkeep` travels), so your prompt files stay local and never reach GitHub. `archive: off` disables it.
 
@@ -35,7 +35,7 @@ A v1.0.x 10-track benchmark found Pro output only 2.2% longer while quality was 
 
 **Source base + mini-guide.** `LINKS.md` — link registry with dates (`synced: DD.MM.YYYY` / `never`) in 4 trust tiers: 1 Suno official, 2 quality third parties (useful, not authoritative), 3 community/observed, 4 yours; single-song breakdowns banned — never overflows. `GUIDE.md` — assembly mechanics only (stateless) + `STYLE-NOTES.md` — on-demand style notes (no entry → point fetch → link + entry). Network — 4 triggers: first launch, explicit command (`update docs`, `refresh sources`, `sync docs`...), 3–4 reworks + complaint, style with no registry entry. Stale (10+ days) — one-line hint only.
 
-**Package and controls.** Chunk = ONE fenced block holding the whole 5-tag package (`TRACK` through end of `INFO` value) — the copy-button window; `blocks` and `single:X` views on request. **Single-emission:** the final block appears exactly once in the conversation — if the archive write surfaces its content (some harnesses echo writes), that write is the single copy window and the answer does not repeat it. Counters N ≤ tier ceiling and ≤ working caps (lyrics 5000 / styles 1000 / title 100 / exclude 200 — officially unverified; heuristic: title 80, tiers M: 3000/600). Styles always in 4 parts (vocal-anchored base → instruments → triple-stack vocal → single mood, no contradictions). More Options — canonical 7+1 with presets (Obedient/Balanced/Wild). INFO records the setup `model:` (`v6` / `v6-wild` / `v6-mini`) and `lang:` (the sticky lyrics language); on `v6-mini` the package is marked non-commercial and Pro-only features (Custom Models / Voices / stems / Studio) are not proposed. Clean text (`text`) and translation (`translate`) print on request, outside the block; the parser block carries neither.
+**Package and controls.** Chunk = ONE fenced block holding the whole 5-tag package (`TRACK` through end of `INFO` value) — the copy-button window; `blocks` and `single:X` views on request. **Single-emission:** the final block appears exactly once in the conversation — if the archive write surfaces its content (some harnesses echo writes), that write is the single copy window and the answer does not repeat it. Counters N ≤ tier ceiling and ≤ working caps (lyrics 5000 / styles 1000 / title 100 / exclude 1000 — officially unverified; heuristic: title 80, tiers M: 3000/600). Styles always in 4 parts (vocal-anchored base → instruments → triple-stack vocal → single mood, no contradictions). More Options — canonical 7+1 with presets (Obedient/Balanced/Wild). INFO records the setup `model:` (`v6` / `v6-wild` / `v6-mini`) and `lang:` (the sticky lyrics language); on `v6-mini` the package is marked non-commercial and Pro-only features (Custom Models / Voices / stems / Studio) are not proposed. Clean text (`text`) and translation (`translate`) print on request, outside the block; the parser block carries neither.
 
 **QoL (Pro).** A one-line counter summary sits at the top of every package (`lyrics N/LIMIT · styles N/LIMIT · title N/LIMIT`). Paper edits show a compact **diff preview** (`was → now`, `no diff` suppresses it). `alt-takes` / `2 styles` emit 2–3 named style variants (a/b/c) before locking. `explain` annotates why each descriptor/section was chosen. `sibling of <track>` / `variation` spin a sibling without resetting the branch. `pin <N>` keeps the last N approved tracks in the STATE card.
 
@@ -61,7 +61,7 @@ API bots, batch generation, billing/keys, covers/video, mastering outside Suno, 
 3. **Draft**: paste your Lyrics + Styles as-is → get v2 with a breakdown of what was red.
 4. **By link**: drop a Suno track or YouTube/Spotify URL → keep/change breakdown → package.
 5. **Sibling** (Lite): `based on <past track title> make it similar but change the arrangement and rewrite the text fully` → new branch.
-6. **Into Suno**: copy the block → `suno.com/create` (Custom/Advanced) → SunoFill button → eyes check → sliders by hand → Create yourself.
+6. **Into Suno**: copy the block → `suno.com/create` (Custom/Advanced) → SunoFill button → eyes check (More Options auto-filled) → Create yourself.
 
 ## Command cheat sheet
 
@@ -127,14 +127,14 @@ Smoke: files, fences, encoding policy, validator verdicts on embedded micro-bloc
 
 ## Status and self-update
 
-v2.0.0-rc9 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
+v2.0.0-rc10 (2026-09-14), Suno v6 family, embedded docs 2026-09-11. GUIDE 15407/50000 (measured). STYLE-NOTES 0/30000 (empty — accrues on demand). History — `CHANGELOG.md` (normative). **Rule: the skill adds every new user-facing feature here too (description + example + numbers if affected) in the same pass** — this file always mirrors the current feature set.
 
 ## FAQ
 
 - **What to ask to start?** Any example from Quick start above — the skill will complete it with pointed questions.
 - **Pro or Lite?** Don't guess: the skill assesses the window and proposes, you confirm. Roughly: strong paid — Pro; free/small — Lite.
 - **Why one block of output?** Default `chunk` = one fenced 5-tag block (copy-button window) for copy-paste/parser. `blocks` or `single:LYRICS` — on request. Clean text (`text`) and translation (`translate`) print on request, outside the block.
-- **Are Suno limits exact?** Three classes, don't mix: verified (Suno publishes no numbers — empty), working (lyrics 5000 / styles 1000 / exclude 200 / title 100 — best known, re-verify live; styles 1000 observed live 2026-09-12, still unpublished by Suno), heuristic (title 80, tiers M: 3000/600 — safe policy). If live Suno disagrees — the box is right, fix the table the same day.
+- **Are Suno limits exact?** Three classes, don't mix: verified (Suno publishes no numbers — empty), working (lyrics 5000 / styles 1000 / exclude 1000 / title 100 — best known, re-verify live; styles 1000 and exclude 1000 observed live 2026-09-14, still unpublished by Suno), heuristic (title 80, tiers M: 3000/600 — safe policy). If live Suno disagrees — the box is right, fix the table the same day.
 - **Does the skill browse at my expense?** Pro — only on 4 triggers and point-wise; Lite — never. Link dates are checked locally for free.
 - **Foreign track as reference — allowed?** Yes: facts into research, sound into sound-alike. Foreign names/titles/lines — never in fields, only in summary/INFO.
 - **Will a Suno track link suck everything in?** No: only the header is visible from outside. The skill will say so honestly and ask for the 4-field paste — then breakdown and package.

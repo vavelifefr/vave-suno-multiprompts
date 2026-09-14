@@ -50,7 +50,7 @@ After every approved track (and on `give state`): `STATE v2 | lite | <model> | <
 
 `TRACK:->` → `LYRICS:->` → `STYLES:->` → `MOREOPTIONS:->` (7-field line + single newline + `Exclude:` line, no blank inside) → `INFO:->` (exactly one physical value line, working cap 4000 chars: request shape / summary / vibe / model / lang / canonical filename / version / time / Suno version / docs stamp / `ref_*` when used). On request only, outside the block: `text` (clean sung text, no brackets) and `translate` (mirror). Raw validator input begins with `TRACK:->` and excludes Markdown fences, wrapper prose and STATE. (Alt-takes, diff preview, explain mode and the pin table are Pro extras — not in Lite.)
 - Key tag ALONE on its line; exactly one blank line after it (before the value) and before every tag except `TRACK:->`.
-- Counter `N` = every character incl. spaces, line breaks, `[...]`. `N <= tier-top` AND `N <= LIMIT`, always. Counter line lives AFTER the fenced block in `blocks` view, never inside paste-ready text. Count by hand (no shell on most Lite stands) — the §4 Self-check list doubles as your manual checklist, tick every box.
+- Counter `N` = every character incl. spaces, line breaks, `[...]`. `N <= tier-top` AND `N <= LIMIT`, always. The counter line lives in the summary (never inside paste-ready text). Count by hand (no shell on most Lite stands) — the §4 Self-check list doubles as your manual checklist, tick every box.
 - Self-check (all green or fix in the same pass — red never ships): title≤80 / lyrics+styles within tier top + LIMIT / no prose in Styles / no genre-mood-tempo words in sung lines / heads from `LITE-TAGS.md` A/B only, briefs E only / 7+1 complete (`Exclude: none` when empty), Variety ≤Extra (Max only on explicit freedom), Personalize Off / one mood tension / no artist names, no unlicensed third-party text.
 
 ## 5. Styles in 4 lines (fixed order, commas inside)
@@ -89,7 +89,7 @@ When validating Lite from this folder, pass `-TagsPath LITE-TAGS.md` together wi
 
 - 2026-09-13: v1.1.0 — Pro is the default proposal; first-launch five-question setup batch added; version synced to the Pro release.
 - 2026-09-12: v1.0.1 audit hardening (honest STATE recovery, fixed-gender switch, experimental fill label, Lite dictionary validator flag).
-- 2026-09-12: maintenance fix (F3/F9 audit): §9 fill covers Variant 2 sliders/selects path; frozen C3-subset normalization (layout map + typo/echo discipline); budget line refreshed.
+- 2026-09-12: maintenance fix (F3/F9 audit): §9 fill; frozen C3-subset normalization (layout map + typo/echo discipline); budget line refreshed. (Historical: an earlier Variant 2 sliders/selects path was removed in v3.0.0.)
 - 2026-09-12: Lite entry forked from Pro (micro-steps, embedded reference, `v6-mini` default, no GUIDE/LINKS machinery, self-contained pair with LITE-TAGS.md).
 
 (End of file)

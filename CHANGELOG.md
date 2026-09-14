@@ -1,8 +1,10 @@
 ﻿# CHANGELOG.md — vave-suno-multiprompts (normative history)
 
-- Version: 2.0.0-rc9
+- Version: 2.0.0-rc10
 - Date: 2026-09-14
 - Note: normative release history. SKILL.md keeps only a pointer; runtime does not load this file.
+
+- 2026-09-14: v2.0.0-rc10 (pre-release) — audit fixes. (a) README "no Suno automation"/"sliders by hand" reworded (the fill button applies the More Options controls; Create is never pressed) and the stale "6.0x" → **7.3×**. (b) userscript FREE-TIER log no longer claims sliders are untouched. (c) **Exclude cap 200 → 1000** (live-observed) across RULES R3, SKILL §7.2, README, and the validator (`$workExcludeCap`, WARN threshold). (d) `SKILL.md §8` adapter range `A0–A6` → `A0–A7`. (e) ADAPTERS/LITE changelog entries marked superseded/historical (mandatory A7 set, Variant 2). (f) CORE C2 no longer re-asks `detail`/`general` when the setup batch already set `Reference`+tier. (g) LITE counter placement aligned to the summary.
 
 - 2026-09-14: v2.0.0-rc9 (pre-release) — **single-render fix**: the 5-tag block now appears exactly ONCE in the conversation. When the archive write surfaces its file content (harnesses that echo writes), that write IS the single render and the answer must NOT paste the block again; on harnesses that hide file content, the answer carries it once and the archive is written silently. CORE C4 + ADAPTERS + README synced (previously the echoed archive write plus the pasted block produced two copies).
 

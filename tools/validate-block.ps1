@@ -145,14 +145,14 @@ function Get-LexiconWords($tagLines) {
 $lexWords = Get-LexiconWords $tagLines
 $comboGender = @('male', 'female')
 
-# Tier ceilings (heuristic_cap, SKILL.md size tiers) + working caps (lyrics 5000 / styles 1000 / title 100 / exclude 200 chars - all officially unverified, enforced until live says otherwise).
+  # Tier ceilings (heuristic_cap, SKILL.md size tiers) + working caps (lyrics 5000 / styles 1000 / title 100 / exclude 1000 chars - all officially unverified, enforced until live says otherwise).
 $lyricsTiers = @{ S = 1000; M = 3000; L = 4000; XL = 5000 }
 $stylesTiers = @{ S = 250; M = 600; L = 800; XL = 900 }
 $workLyricsCap = 5000
 $workStylesCap = 1000
 $workTitleCap = 100
 $heurTitleCap = 80
-$workExcludeCap = 200
+$workExcludeCap = 1000
 $closers = @('[Outro]', '[Ending]', '[Fade Out]', '[End]', '[Big Finish]')
 $workInfoCap = 4000
 
@@ -353,7 +353,7 @@ if (($foundSeq -join '|') -ne ($expected -join '|')) {
       if ($exVal -ne '' -and $exVal.ToLower() -ne 'none') {
         $exCount = @($exVal -split ',' | Where-Object { $_.Trim() -ne '' }).Count
         if ($exCount -gt 3) { Add-Fail ("Exclude holds at most 3 items, found " + $exCount) }
-        # Exclude char cap (200) is single-lineage working value (needs
+        # Exclude char cap (1000) is the live-observed box limit (2026-09-14; earlier 200 lineage superseded).
         # corroboration) -- enforced as WARN, not FAIL; the count above stays FAIL.
         if ($exVal.Length -gt $workExcludeCap) { Add-Warn ("Exclude text N=" + $exVal.Length + " over working cap " + $workExcludeCap + " (single lineage, verify live)") }
       }

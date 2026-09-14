@@ -88,7 +88,7 @@ Ownership: Pro/Premier creations belong to the creator (commercial use retained 
 | Custom lyrics | 5000 (HG V6 + stable long-term use; official number unpublished) | tiers S1000/M3000/L4000/XL5000 | past ~3000 chars Suno rushes (HG guide) |
 | Style prompt | 1000 (live maxlength observed 2026-09-12 via on-page diagnostics; still unpublished by Suno) | tiers S250/M600/L800/XL900 (XL parked under working) | overlong styles may truncate silently — cut lowest-priority phrases first |
 | Title | 100 (live-observed) | 80 conservative (auto-shorten over) | live v6 allows 100, not used |
-| Exclude styles | 200 chars (single lineage — needs corroboration) | ≤3 focused items per track | prose negations banned from Styles |
+| Exclude styles | 1000 (live-observed 2026-09-14; earlier 200 superseded) | ≤3 focused items per track | prose negations banned from Styles |
 
 Failure mode: overlong style text may be silently truncated in the app — descriptors past the cap never reach the model. If the box stops accepting input, cut lowest-priority phrases first; move detail out of the capped field instead of stacking negation prose. Rough duration guide (HG, calibrate by render): 200-300 words / 30-40 lines map to a standard 3-4 min song; past ~3000 chars Suno rushes. Always confirm exact v6 caps in the live product before a final lock.
 
@@ -114,7 +114,7 @@ Canonical table and presets: RULES.md R8.
 
 Never-mix: RULES.md R2.
 
-## 8. Deploy — adapters: ADAPTERS.md A0–A6.
+## 8. Deploy — adapters: ADAPTERS.md A0–A7.
 
 ## 9. Human docs (English-only)
 
@@ -122,4 +122,4 @@ All human-facing files in this skill are English-only by design (see README.md).
 
 ## Changelog
 
-Full history: `CHANGELOG.md` (normative archive). Latest release: v2.0.0-rc9 (2026-09-14); new entries go to CHANGELOG.md per the README rule.
+Full history: `CHANGELOG.md` (normative archive). Latest release: v2.0.0-rc10 (2026-09-14); new entries go to CHANGELOG.md per the README rule.
